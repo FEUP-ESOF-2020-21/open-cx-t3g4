@@ -68,7 +68,8 @@ Briefly describe each use case mentioning the following:
 
 ### User stories
 User story map:
-https://media.discordapp.net/attachments/757916505068404796/771736719774449684/uml.jpeg
+![GitHub Logo](/images/logo.png)
+Format: ![Alt Text](https://media.discordapp.net/attachments/757916505068404796/771736719774449684/uml.jpeg)
 
 As a user (participant or speaker):
 * As a user, I want to log in to my account, so that I can access the system;
