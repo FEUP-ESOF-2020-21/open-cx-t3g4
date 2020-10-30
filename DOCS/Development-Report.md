@@ -67,7 +67,8 @@ Briefly describe each use case mentioning the following:
 * **Alternative Flows and Exceptions**. Document other, legitimate usage scenarios that can take place within this use case, stating any differences in the sequence of steps that take place. In addition, describe any anticipated error conditions that could occur during execution of the use case, and define how the system is to respond to those conditions.
 
 ### User stories
-This section will contain the requirements of the product described as **user stories**, organized in a global **[user story map](https://plan.io/blog/user-story-mapping/)** with **user roles** or **themes**.
+User story map:
+https://media.discordapp.net/attachments/757916505068404796/771736719774449684/uml.jpeg
 
 As a user (participant or speaker):
 * As a user, I want to log in to my account, so that I can access the system;
