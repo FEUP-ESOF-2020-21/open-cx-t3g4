@@ -26,21 +26,23 @@ Please contact us!
 
 Thank you!
 
-*team members names*
+Diogo Filipe Martins
+Lara Médicis
+Mariana Soares
+Mário Sousa
+Pedro Vale
 
 ---
 
 ## Product Vision
+
 Traditional conference meetings have promoted social interaction outside of oficial events for many years, and why not bring that to the digital world, where the concept of social media is already so heavily ingrained? Lobby Jump’s goal is to provide an informal digital space where conference participants are able to form ties in chatrooms especially dedicated to their favourite topics, encouraging relationships just as strong as the ones we build face to face.
 
 ---
 ## Elevator Pitch
-Draft a small text to help you quickly introduce and describe your product in a short time and a few words (~800 characters), a technique usually known as elevator pitch.
 
-Take a look at the following links to learn some techniques:
-* [Crafting an Elevator Pitch](https://www.mindtools.com/pages/article/elevator-pitch.htm)
-* [The Best Elevator Pitch Examples, Templates, and Tactics - A Guide to Writing an Unforgettable Elevator Speech, by strategypeak.com](https://strategypeak.com/elevator-pitch-examples/)
-* [Top 7 Killer Elevator Pitch Examples, by toggl.com](https://blog.toggl.com/elevator-pitch-examples/)
+In this day and age, social interaction if arguably one of the most important and influential aspects of the digital world, so it's astonishing how little informal discussion is encouraged in existing virtual conference platforms. At Lobby Jump, our goal is to bring people together during those tedious moments between sessions, promoting discussions beyond the scope of the conference to provide a fully immersive digital conference experience. 
+
 
 ---
 ## Requirements
