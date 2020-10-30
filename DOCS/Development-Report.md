@@ -69,11 +69,21 @@ Briefly describe each use case mentioning the following:
 ### User stories
 This section will contain the requirements of the product described as **user stories**, organized in a global **[user story map](https://plan.io/blog/user-story-mapping/)** with **user roles** or **themes**.
 
-For each theme, or role, you may add a small description. User stories should be detailed in the tool you decided to use for project management (e.g. trello or github projects).
+As a user, I want to log in to my account, so that I can access the system;
+As a user, I want my account to have a password, so that I am the only one who has access to it;
+As a user, I want to edit my account, so that I can update my personal information;
+As a user, I want to see the list of available conferences, so that I can choose one; 
+As a user, I want to choose chatrooms dedicated to my favorite topics, so that I can discuss about them;
+As a user, I want to see my own time schedule;
+As a user, I want to talk to another user through direct messages;
+As a user, I want to choose tags related to the topics that I’m interested in;
+As a user, I want to be able to talk when it’s my turn;
+As a user, I want to hear other users one at a time;
 
-A user story is a description of desired functionality told from the perspective of the user or customer. A starting template for the description of a user story is
+As a participant, I want to be able to ask questions to the speaker so that i can expose my doubts;
+As a participant, I want to vote on the most interesting questions, so that they can be answered;
 
-*As a < user role >, I want < goal > so that < reason >.*
+As a speaker, I want to see the most interesting questions, so that i can answer it.
 
 
 **INVEST in good user stories**.
