@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "659915357584",
+    "firebase_url": "https://lobbyjump.firebaseio.com",
+    "project_id": "lobbyjump",
+    "storage_bucket": "lobbyjump.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:659915357584:android:fdb5e52f9633c22a19c715",
+        "android_client_info": {
+          "package_name": "com.lobbyjump.lobbyjump"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "659915357584-m2eidnc4lf5n2cjo8r8r2d5hcccq53t6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCkrrorznC6n2oAECS2y_p1HM8BhYIv6to"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "659915357584-m2eidnc4lf5n2cjo8r8r2d5hcccq53t6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
