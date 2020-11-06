@@ -73,7 +73,7 @@ As a user (participant or speaker):
 * As a user, I want to register my account, so that I can access the system;
 * As a user, I want to log in to my account, so that I can access the system;
 * As a user, I want to log out my account, so that I can terminate my session;
-* As a user, I can request a password reminder so that I can log in if I forget mine;
+* As a user, I can request a password reminder, so that I can log in if I forget mine;
 * As a user, I want to edit my account, so that I can update my personal information;
 * As a user, I want to see the list of available conferences, so that I can choose one; 
 * As a user, I want to choose chatrooms dedicated to my favorite topics, so that I can discuss about them;
@@ -84,11 +84,11 @@ As a user (participant or speaker):
 * As a user, I want to hear other users one at a time, so that I can know their point;
 
 As a participant:
-* As a participant, I want to be able to ask questions to the speaker, so that i can expose my doubts;
+* As a participant, I want to be able to ask questions to the speaker, so that I can expose my doubts;
 * As a participant, I want to vote on the most interesting questions, so that they can be answered;
 
 As a speaker:
-* As a speaker, I want to see the most interesting questions, so that i can answer it.
+* As a speaker, I want to see the most interesting questions, so that I can answer it.
 
 
 **INVEST in good user stories**.
