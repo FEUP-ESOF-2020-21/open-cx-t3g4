@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lobby_jump/home_page.dart';
 import 'auth.dart';
+import 'package:email_validator/email_validator.dart';
 
 class LoginPage extends StatefulWidget {
   LoginPage({Key key}) : super(key: key);
@@ -40,7 +41,16 @@ class _LoginPageState extends State<LoginPage> {
                     : Color.fromRGBO(88, 0, 0, 1))),
         autocorrect: false,
         onChanged: (value) => _email = value,
-        validator: (value) => value.isEmpty ? 'Email can\'t be empty.' : null,
+        validator: (value) {
+          if (value.isEmpty) {
+            return 'Email can\'t be empty.';
+          }
+          if (!value.contains(
+              r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$')) {
+            return 'Invalid Email';
+          }
+          return null;
+        },
       )),
       padded(
           child: Row(
@@ -82,6 +92,7 @@ class _LoginPageState extends State<LoginPage> {
       authStatus = status;
     });
   }
+
 
   bool validateAndSave() {
     final form = _formKey.currentState;
