@@ -23,6 +23,8 @@ class _RegisterPageState extends State<RegisterPage> {
   FocusNode myFocusNode = new FocusNode();
   BaseAuth auth = new Auth();
   AuthStatus authStatus = AuthStatus.notSignedIn;
+  final _formKey = new GlobalKey<FormState>();
+
 
   List<Widget> usernameAndPassword() {
     return [
@@ -76,13 +78,24 @@ class _RegisterPageState extends State<RegisterPage> {
     ];
   }
 
+bool validateAndSave() {
+    final form = _formKey.currentState;
+    if (form.validate()) {
+      form.save();
+      return true;
+    }
+    return false;
+  }
+
   void validateAndSubmit() async {
     try {
+      if(validateAndSave()){
       auth.createUser(_email, _password);
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => LoginPage()),
       );
+      }
     } catch (e) {
       print(e);
     }
@@ -92,20 +105,26 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomPadding: false,
-      appBar: new AppBar(
-        title: new Text("goback"),
-        iconTheme: IconThemeData(color: Color.fromRGBO(88, 0, 0, 1)),
-        backgroundColor: Colors.white,
-        elevation: 0,
-      ),
       backgroundColor: Colors.white,
-      body: Column(children: [
+      body: new Form(
+      key: _formKey,
+      child:Column(children: [
         Container(
-          child: Image.asset('lib/images/symbol.png'),
-          padding: EdgeInsets.only(bottom: 5, top: 30, left: 10, right: 10),
+          child: IconButton(
+              icon: Icon(Icons.house_outlined),
+              color: Colors.grey[600],
+              iconSize: 40,
+              onPressed: () {
+                Navigator.pop(context);
+              }),
+          padding: EdgeInsets.only(bottom: 10, top: 40, left: 10, right: 310),
         ),
         Container(
-            padding: EdgeInsets.only(left: 10, right: 10, bottom: 125),
+          child: Image.asset('lib/images/symbol.png'),
+          padding: EdgeInsets.only(bottom: 10, top: 30, left: 10, right: 10),
+        ),
+        Container(
+            padding: EdgeInsets.only(left: 10, right: 10, bottom: 100),
             child: new Column(
               children: usernameAndPassword(),
             )),
@@ -146,7 +165,7 @@ class _RegisterPageState extends State<RegisterPage> {
             ),
           ),
         )
-      ]),
+      ])),
     );
   }
 
