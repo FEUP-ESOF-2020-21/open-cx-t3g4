@@ -109,7 +109,7 @@ At the end, it is good to add a rough indication of the value of the user story 
 
 To better understand the context of the software system, it is very useful to have a simple UML class diagram with all the key concepts (names, attributes) and relationships involved of the problem domain addressed by your module.
 
-Use case diagram: ![Alt Text](https://media.discordapp.net/attachments/757916505068404796/771764852929724476/Captura_de_ecra_2020-10-30_as_15.57.53.png?width=1430&height=935)
+UML Diagram: ![Alt Text](https://media.discordapp.net/attachments/757916505068404796/771764852929724476/Captura_de_ecra_2020-10-30_as_15.57.53.png?width=1430&height=935)
 ---
 
 ## Architecture and Design
