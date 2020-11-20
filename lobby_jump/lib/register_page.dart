@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lobby_jump/login_page.dart';
 import 'auth.dart';
+import 'package:email_validator/email_validator.dart';
 
 class RegisterPage extends StatefulWidget {
   RegisterPage({Key key}) : super(key: key);
@@ -23,6 +24,7 @@ class _RegisterPageState extends State<RegisterPage> {
   FocusNode myFocusNode = new FocusNode();
   BaseAuth auth = new Auth();
   AuthStatus authStatus = AuthStatus.notSignedIn;
+  final _formKey = new GlobalKey<FormState>();
 
   List<Widget> usernameAndPassword() {
     return [
@@ -38,8 +40,17 @@ class _RegisterPageState extends State<RegisterPage> {
                     ? Colors.black
                     : Color.fromRGBO(88, 0, 0, 1))),
         autocorrect: false,
-        validator: (val) => val.isEmpty ? 'Email can\'t be empty.' : null,
-        onChanged: (val) => _email = val,
+        validator: (value) {
+          if (value.isEmpty) {
+            return 'Email can\'t be empty.';
+          }
+          if (value.contains(
+              r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$')) {
+            return 'Invalid Email';
+          }
+          return null;
+        },
+        onChanged: (value) => _email = value.trim(),
       )),
       padded(
           child: Row(
@@ -76,13 +87,28 @@ class _RegisterPageState extends State<RegisterPage> {
     ];
   }
 
+  bool validateAndSave() {
+    final form = _formKey.currentState;
+    if (form.validate()) {
+      form.save();
+      return true;
+    }
+    return false;
+  }
+
   void validateAndSubmit() async {
+    String userId = '';
+
     try {
-      auth.createUser(_email, _password);
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => LoginPage()),
-      );
+      if (validateAndSave()) {
+        userId = await auth.createUser(_email, _password);
+        if (userId.length > 0 && userId != null) {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => LoginPage()),
+          );
+        }
+      }
     } catch (e) {
       print(e);
     }
@@ -92,61 +118,68 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomPadding: false,
-      appBar: new AppBar(
-        title: new Text("goback"),
-        iconTheme: IconThemeData(color: Color.fromRGBO(88, 0, 0, 1)),
-        backgroundColor: Colors.white,
-        elevation: 0,
-      ),
       backgroundColor: Colors.white,
-      body: Column(children: [
-        Container(
-          child: Image.asset('lib/images/symbol.png'),
-          padding: EdgeInsets.only(bottom: 5, top: 30, left: 10, right: 10),
-        ),
-        Container(
-            padding: EdgeInsets.only(left: 10, right: 10, bottom: 125),
-            child: new Column(
-              children: usernameAndPassword(),
-            )),
-        Container(
-          height: 50.0,
-          width: 300.0,
-          child: GestureDetector(
-            onTap: () {
-              validateAndSubmit();
-            },
-            child: Container(
-              decoration: BoxDecoration(
-                border: Border.all(
-                  color: Colors.grey,
-                  style: BorderStyle.solid,
-                  width: 1.0,
-                ),
-                color: Colors.transparent,
-                borderRadius: BorderRadius.circular(30.0),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Center(
-                    child: Text(
-                      "SIGN UP",
-                      style: TextStyle(
-                        color: Color.fromRGBO(88, 0, 0, 1),
-                        fontFamily: 'Montserrat',
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
-                        letterSpacing: 1,
-                      ),
-                    ),
-                  )
-                ],
-              ),
+      body: new Form(
+          key: _formKey,
+          child: Column(children: [
+            Container(
+              child: IconButton(
+                  icon: Icon(Icons.house_outlined),
+                  color: Colors.grey[600],
+                  iconSize: 40,
+                  onPressed: () {
+                    Navigator.pop(context);
+                  }),
+              padding:
+                  EdgeInsets.only(bottom: 10, top: 40, left: 10, right: 310),
             ),
-          ),
-        )
-      ]),
+            Container(
+              child: Image.asset('lib/images/symbol.png'),
+              padding: EdgeInsets.only(top: 5, left: 10, right: 10),
+            ),
+            Container(
+                padding: EdgeInsets.only(left: 10, right: 10, bottom: 100),
+                child: new Column(
+                  children: usernameAndPassword(),
+                )),
+            Container(
+              height: 50.0,
+              width: 300.0,
+              child: GestureDetector(
+                onTap: () {
+                  validateAndSubmit();
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: Colors.grey,
+                      style: BorderStyle.solid,
+                      width: 1.0,
+                    ),
+                    color: Colors.transparent,
+                    borderRadius: BorderRadius.circular(30.0),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Center(
+                        child: Text(
+                          "SIGN UP",
+                          style: TextStyle(
+                            color: Color.fromRGBO(88, 0, 0, 1),
+                            fontFamily: 'Montserrat',
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                            letterSpacing: 1,
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            )
+          ])),
     );
   }
 
