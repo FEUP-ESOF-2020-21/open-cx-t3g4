@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lobby_jump/chatroom.dart';
+import 'package:lobby_jump/create_conference.dart';
 import 'package:lobby_jump/conference_menu.dart';
 import 'auth.dart';
 

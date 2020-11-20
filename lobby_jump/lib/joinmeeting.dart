@@ -2,9 +2,15 @@ import 'package:flutter/material.dart';
 
 import 'package:jitsi_meet/jitsi_meet.dart';
 
+import 'auth.dart';
+
 class Join extends StatefulWidget {
   @override
   _JoinState createState() => _JoinState();
+  
+  final BaseAuth auth;
+  final VoidCallback onSignOut;
+  Join({this.auth, this.onSignOut});
 }
 
 class _JoinState extends State<Join> {
@@ -36,9 +42,14 @@ class _JoinState extends State<Join> {
                 ),
               ),
               RaisedButton(
-                onPressed: () => _joinMeeting(),
-                child: Text('Join Meeting'),
-              )
+                  onPressed: () => _joinMeeting(),
+                  child: Text('Join Meeting',
+                      style:
+                          new TextStyle(fontSize: 17.0, color: Colors.white)),
+                  color: Color.fromRGBO(88, 0, 0, 1),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(50.0),
+                  ))
             ],
           ),
         )));

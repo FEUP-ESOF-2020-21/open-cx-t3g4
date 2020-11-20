@@ -14,25 +14,24 @@ import 'package:jitsi_meet/room_name_constraint_type.dart';
 
 //void main() => runApp(Chatroom());
 
-class Chatroom extends StatefulWidget {
+class ChatRoom extends StatefulWidget {
   @override
-  _ChatroomState createState() => _ChatroomState();
-  
+  _ChatRoomState createState() => _ChatRoomState();
+
   final BaseAuth auth;
   final VoidCallback onSignOut;
-  Chatroom({this.auth, this.onSignOut});
+  ChatRoom({this.auth, this.onSignOut});
 }
 
-class _ChatroomState extends State<Chatroom> {
+class _ChatRoomState extends State<ChatRoom> {
   final serverText = TextEditingController();
-  final roomText = TextEditingController(text: "plugintestroom");
-  final subjectText = TextEditingController(text: "My Plugin Test Meeting");
-  final nameText = TextEditingController(text: "Plugin Test User");
-  final emailText = TextEditingController(text: "fake@email.com");
+  final roomText = TextEditingController(text: "ChatRoom");
+  final subjectText = TextEditingController(text: "Virtual Reality");
+  //final nameText = TextEditingController(text: "Plugin Test User");
+  //final emailText = TextEditingController(text: "fake@email.com");
   var isAudioOnly = true;
   var isAudioMuted = true;
   var isVideoMuted = true;
-  
 
   @override
   void initState() {
@@ -48,172 +47,14 @@ class _ChatroomState extends State<Chatroom> {
   void dispose() {
     super.dispose();
     JitsiMeet.removeAllListeners();
-  }          
-
+  }
 
   @override
   Widget build(BuildContext context) {
-    
-    void _signOut() async {
-      try {
-        await widget.auth.signOut();
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (context) => InitialPage()),
-        );
-        widget.onSignOut();
-      } catch (e) {
-        print(e);
-      }
-    }
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: new AppBar(
-          title: const Text('Create Conference'),
-          leading: new Container(),
-          backgroundColor: Colors.white,
-          elevation: 0,
-          actions: <Widget>[
-            new FlatButton(
-                onPressed: _signOut,
-                child: new Text('Logout',
-                    style: new TextStyle(
-                        fontSize: 17.0, color: Color.fromRGBO(88, 0, 0, 1))
-                        ))
-          ],
-        ),
-        body: Container(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 16.0,
-          ),
-          child: SingleChildScrollView(
-            child: Column(
-              children: <Widget>[
-                new FlatButton(
-                    onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Join()));
-                    },
-                    child: new Text('Logout',
-                        style: new TextStyle(
-                            fontSize: 17.0,
-                            color: Color.fromRGBO(88, 0, 0, 1)))),
-                /* SizedBox(
-                  height: 24.0,
-                ),
-                TextField(
-                  controller: serverText,
-                  decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: "Server URL",
-                      hintText: "Hint: Leave empty for meet.jitsi.si"),
-                ), */
-                SizedBox(
-                  height: 16.0,
-                ),
-                TextField(
-                  controller: roomText,
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: "Conference Name",
-                  ),
-                ),
-                SizedBox(
-                  height: 16.0,
-                ),
-                TextField(
-                  controller: subjectText,
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: "Subject",
-                  ),
-                ),
-                SizedBox(
-                  height: 16.0,
-                ),
-                TextField(
-                  controller: nameText,
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: "Display Name",
-                  ),
-                ),
-                SizedBox(
-                  height: 16.0,
-                ),
-                CheckboxListTile(
-                  title: Text("Audio Only"),
-                  value: isAudioOnly,
-                  onChanged: _onAudioOnlyChanged,
-                ),
-                SizedBox(
-                  height: 16.0,
-                ),
-                CheckboxListTile(
-                  title: Text("Audio Muted"),
-                  value: isAudioMuted,
-                  onChanged: _onAudioMutedChanged,
-                ),
-                SizedBox(
-                  height: 16.0,
-                ),
-                CheckboxListTile(
-                  title: Text("Video Muted"),
-                  value: isVideoMuted,
-                  onChanged: _onVideoMutedChanged,
-                ),
-                Divider(
-                  height: 48.0,
-                  thickness: 2.0,
-                ),
-                SizedBox(
-                  height: 64.0,
-                  width: double.maxFinite,
-                  child: RaisedButton(
-                    onPressed: () {
-                      _joinMeeting();
-                    },
-                    child: Text(
-                      "Create Meeting",
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    color: Color.fromRGBO(88, 0, 0, 1),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(50.0),
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: 48.0,
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
+    createChatRoom();
   }
 
-  _onAudioOnlyChanged(bool value) {
-    setState(() {
-      isAudioOnly = value;
-    });
-  }
-
-  _onAudioMutedChanged(bool value) {
-    setState(() {
-      isAudioMuted = value;
-    });
-  }
-
-  _onVideoMutedChanged(bool value) {
-    setState(() {
-      isVideoMuted = value;
-    });
-  }
-
-  _joinMeeting() async {
+  createChatRoom() async {
     String serverUrl =
         serverText.text?.trim()?.isEmpty ?? "" ? null : serverText.text;
 
@@ -239,8 +80,8 @@ class _ChatroomState extends State<Chatroom> {
         ..room = roomText.text
         ..serverURL = serverUrl
         ..subject = subjectText.text
-        ..userDisplayName = nameText.text
-        ..userEmail = emailText.text
+        //..userDisplayName = nameText.text
+        //..userEmail = emailText.text
         ..audioOnly = isAudioOnly
         ..audioMuted = isAudioMuted
         ..videoMuted = isVideoMuted
