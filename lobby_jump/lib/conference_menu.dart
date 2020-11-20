@@ -2,19 +2,14 @@ import 'dart:ui';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:lobby_jump/chatroom.dart';
 import 'package:lobby_jump/create_conference.dart';
-import 'package:lobby_jump/sign_button.dart';
 import 'auth.dart';
 import 'initial_page.dart';
 import 'joinmeeting.dart';
-import 'chatroom.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:jitsi_meet/feature_flag/feature_flag_enum.dart';
 import 'package:jitsi_meet/jitsi_meet.dart';
 import 'package:jitsi_meet/jitsi_meeting_listener.dart';
-import 'package:jitsi_meet/room_name_constraint.dart';
-import 'package:jitsi_meet/room_name_constraint_type.dart';
 
 class ConferenceMenu extends StatelessWidget {
   ConferenceMenu({this.auth, this.onSignOut});
@@ -81,7 +76,6 @@ class ConferenceMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //createChatRoom();
     void _signOut() async {
       try {
         await auth.signOut();
@@ -164,11 +158,6 @@ class ConferenceMenu extends StatelessWidget {
           height: 70.0,
           child: new RaisedButton(
             onPressed: () {
-              /* Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) =>
-                          Join(auth: auth, onSignOut: () => onSignOut)) );*/
               createChatRoom();
             },
             child: Text(

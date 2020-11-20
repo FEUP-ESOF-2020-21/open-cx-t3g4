@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:lobby_jump/create_conference.dart';
 import 'package:lobby_jump/conference_menu.dart';
 import 'auth.dart';
-
 
 class LoginPage extends StatefulWidget {
   LoginPage({Key key}) : super(key: key);
@@ -113,14 +111,10 @@ class _LoginPageState extends State<LoginPage> {
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(
-                builder: (context) => new ConferenceMenu(auth: auth, onSignOut: () =>
-                          _updateAuthStatus(AuthStatus.notSignedIn)),
-                /* Chatroom(
-                      auth: auth,
-                      onSignOut: () =>
-                          _updateAuthStatus(AuthStatus.notSignedIn),
-                    ) */
-                    ),
+              builder: (context) => new ConferenceMenu(
+                  auth: auth,
+                  onSignOut: () => _updateAuthStatus(AuthStatus.notSignedIn)),
+            ),
           );
         }
       }

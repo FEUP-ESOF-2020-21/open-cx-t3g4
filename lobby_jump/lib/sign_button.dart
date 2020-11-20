@@ -1,15 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lobby_jump/login_page.dart';
 import 'package:lobby_jump/register_page.dart';
-
-import 'sign_button.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:jitsi_meet/feature_flag/feature_flag_enum.dart';
-import 'package:jitsi_meet/jitsi_meet.dart';
-import 'package:jitsi_meet/jitsi_meeting_listener.dart';
-import 'package:jitsi_meet/room_name_constraint.dart';
-import 'package:jitsi_meet/room_name_constraint_type.dart';
-import 'create_conference.dart';
 
 class SignButton extends StatelessWidget {
   SignButton({this.key, this.text, this.colorButton, this.function})
@@ -30,8 +22,7 @@ class SignButton extends StatelessWidget {
                   context,
                   MaterialPageRoute(builder: (context) => LoginPage()),
                 )
-              :
-               Navigator.push(
+              : Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => RegisterPage()),
                 );
@@ -43,7 +34,11 @@ class SignButton extends StatelessWidget {
               style: BorderStyle.solid,
               width: 1.0,
             ),
-            color: colorButton == 1 ? Colors.white : colorButton ==3? Color.fromRGBO(88, 0, 0, 1):Colors.transparent,
+            color: colorButton == 1
+                ? Colors.white
+                : colorButton == 3
+                    ? Color.fromRGBO(88, 0, 0, 1)
+                    : Colors.transparent,
             borderRadius: BorderRadius.circular(30.0),
           ),
           child: Row(

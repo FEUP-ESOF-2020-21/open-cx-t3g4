@@ -1,18 +1,13 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:lobby_jump/joinmeeting.dart';
 import 'auth.dart';
-
 import 'initial_page.dart';
-import 'joinmeeting.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:jitsi_meet/feature_flag/feature_flag_enum.dart';
 import 'package:jitsi_meet/jitsi_meet.dart';
 import 'package:jitsi_meet/jitsi_meeting_listener.dart';
 import 'package:jitsi_meet/room_name_constraint.dart';
 import 'package:jitsi_meet/room_name_constraint_type.dart';
-
-//void main() => runApp(Chatroom());
 
 class CreateConference extends StatefulWidget {
   @override
@@ -86,16 +81,6 @@ class _CreateConferenceState extends State<CreateConference> {
           child: SingleChildScrollView(
             child: Column(
               children: <Widget>[
-                /* SizedBox(
-                  height: 24.0,
-                ),
-                TextField(
-                  controller: serverText,
-                  decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: "Server URL",
-                      hintText: "Hint: Leave empty for meet.jitsi.si"),
-                ), */
                 SizedBox(
                   height: 16.0,
                 ),
