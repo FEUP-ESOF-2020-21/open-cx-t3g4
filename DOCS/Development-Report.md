@@ -89,7 +89,8 @@ As a participant:
 * As a participant, I want to vote on the most interesting questions, so that they can be answered;
 
 As a speaker:
-* As a speaker, I want to see the most interesting questions, so that I can answer it.
+* As a speaker, I want to see the most interesting questions, so that I can answer it;
+* As a speaker, I want to create a conference room, so that I can talk about a topic.
 
 
 **INVEST in good user stories**.
