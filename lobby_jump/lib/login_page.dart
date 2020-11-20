@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:lobby_jump/home_page.dart';
+import 'package:lobby_jump/chatroom.dart';
 import 'auth.dart';
-import 'package:email_validator/email_validator.dart';
 
 class LoginPage extends StatefulWidget {
   LoginPage({Key key}) : super(key: key);
@@ -112,7 +111,7 @@ class _LoginPageState extends State<LoginPage> {
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(
-                builder: (context) => HomePage(
+                builder: (context) => Chatroom(
                       auth: auth,
                       onSignOut: () =>
                           _updateAuthStatus(AuthStatus.notSignedIn),
