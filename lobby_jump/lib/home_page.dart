@@ -32,7 +32,8 @@ class HomePage extends StatelessWidget {
                 onPressed: _signOut,
                 child: new Text('Logout',
                     style: new TextStyle(
-                        fontSize: 17.0, color: Color.fromRGBO(88, 0, 0, 1))))
+                        fontSize: 17.0, color: Color.fromRGBO(88, 0, 0, 1))
+                        ))
           ],
         ),
         backgroundColor: Colors.white,
