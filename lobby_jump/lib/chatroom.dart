@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:lobby_jump/joinmeeting.dart';
 import 'auth.dart';
 
+import 'initial_page.dart';
 import 'joinmeeting.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:jitsi_meet/feature_flag/feature_flag_enum.dart';
@@ -16,9 +17,10 @@ import 'package:jitsi_meet/room_name_constraint_type.dart';
 class Chatroom extends StatefulWidget {
   @override
   _ChatroomState createState() => _ChatroomState();
-  Chatroom({this.auth, this.onSignOut});
+  
   final BaseAuth auth;
   final VoidCallback onSignOut;
+  Chatroom({this.auth, this.onSignOut});
 }
 
 class _ChatroomState extends State<Chatroom> {
@@ -30,6 +32,7 @@ class _ChatroomState extends State<Chatroom> {
   var isAudioOnly = true;
   var isAudioMuted = true;
   var isVideoMuted = true;
+  
 
   @override
   void initState() {
@@ -45,16 +48,40 @@ class _ChatroomState extends State<Chatroom> {
   void dispose() {
     super.dispose();
     JitsiMeet.removeAllListeners();
-  }
+  }          
+
 
   @override
   Widget build(BuildContext context) {
+    
+    void _signOut() async {
+      try {
+        await widget.auth.signOut();
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => InitialPage()),
+        );
+        widget.onSignOut();
+      } catch (e) {
+        print(e);
+      }
+    }
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        appBar: AppBar(
+        appBar: new AppBar(
           title: const Text('Create Conference'),
-          backgroundColor: Color.fromRGBO(88, 0, 0, 1),
+          leading: new Container(),
+          backgroundColor: Colors.white,
+          elevation: 0,
+          actions: <Widget>[
+            new FlatButton(
+                onPressed: _signOut,
+                child: new Text('Logout',
+                    style: new TextStyle(
+                        fontSize: 17.0, color: Color.fromRGBO(88, 0, 0, 1))
+                        ))
+          ],
         ),
         body: Container(
           padding: const EdgeInsets.symmetric(
