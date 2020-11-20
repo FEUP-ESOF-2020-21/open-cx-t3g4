@@ -40,12 +40,12 @@ class _LoginPageState extends State<LoginPage> {
                     ? Colors.black
                     : Color.fromRGBO(88, 0, 0, 1))),
         autocorrect: false,
-        onChanged: (value) => _email = value,
+        onChanged: (value) => _email = value.trim(),
         validator: (value) {
           if (value.isEmpty) {
             return 'Email can\'t be empty.';
           }
-          if (!value.contains(
+          if (value.contains(
               r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$')) {
             return 'Invalid Email';
           }
@@ -93,7 +93,6 @@ class _LoginPageState extends State<LoginPage> {
     });
   }
 
-
   bool validateAndSave() {
     final form = _formKey.currentState;
     if (form.validate()) {
@@ -104,19 +103,22 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void validateAndSubmit() async {
+    String userId = '';
     try {
       if (validateAndSave()) {
-        auth.signIn(_email, _password);
-
-        _updateAuthStatus(AuthStatus.signedIn);
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-              builder: (context) => HomePage(
-                    auth: auth,
-                    onSignOut: () => _updateAuthStatus(AuthStatus.notSignedIn),
-                  )),
-        );
+        userId = await auth.signIn(_email, _password);
+        if (userId.length > 0 && userId != null) {
+          _updateAuthStatus(AuthStatus.signedIn);
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+                builder: (context) => HomePage(
+                      auth: auth,
+                      onSignOut: () =>
+                          _updateAuthStatus(AuthStatus.notSignedIn),
+                    )),
+          );
+        }
       }
     } catch (e) {
       print(e);
@@ -144,8 +146,7 @@ class _LoginPageState extends State<LoginPage> {
             ),
             Container(
               child: Image.asset('lib/images/symbol.png'),
-              padding:
-                  EdgeInsets.only(bottom: 10, top: 30, left: 10, right: 10),
+              padding: EdgeInsets.only(top: 5, left: 10, right: 10),
             ),
             Container(
                 padding: EdgeInsets.only(left: 10, right: 10, bottom: 100),
