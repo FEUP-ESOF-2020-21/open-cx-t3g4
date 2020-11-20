@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lobby_jump/login_page.dart';
 import 'auth.dart';
-import 'package:email_validator/email_validator.dart';
 
 class RegisterPage extends StatefulWidget {
   RegisterPage({Key key}) : super(key: key);
