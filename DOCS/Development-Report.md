@@ -68,6 +68,65 @@ Briefly describe each use case mentioning the following:
 
 Use case diagram: ![Alt Text](https://media.discordapp.net/attachments/757916505068404796/779361541602279424/Diagrama_em_branco.png?width=856&height=935)
 
+Ask a Question to Speaker:
+
+* **Actor**: Participant
+* **Description**: This use case exists so that the participant can ask questions to the Speaker during the conference.
+* **Preconditions and Postconditions**: In order to ask a question to the Speaker, the Participant must first login into the application and select the conference that is occuring in the schedule. Then, the question will be uploaded.
+
+* **Normal Flow**: 
+ *The Participant logs in;
+ *The Participant selects the time schedule icon;
+ *The Participant selects the Conference that is occuring;
+ *The Participant inserts a question in the Question area.
+ 
+* **Alternative Flows and Exceptions**:
+ *The Participant logs in;
+ *The Participant selects the time schedule icon;
+ *The Participant selects a Conference that is not occuring;
+ *That Conference will no be displayed.
+ 
+ Vote in the Most Interesting Questions:
+
+* **Actor**: Participant
+* **Description**: This use case exists so that the participant can vote in the most interesting questions asked during the conference so they are answered with priority.
+* **Preconditions and Postconditions**: In order to vote in a question, the Participant must first login into the application and select the conference that is occuring in the schedule. Then, a list with questions will be displayed in the conference page.
+
+* **Normal Flow**: 
+ *The Participant logs in;
+ *The Participant selects the time schedule icon;
+ *The Participant selects the Conference that is occuring;
+ *The Participant selects the underlined word "Vote" that is next to the desired question.
+ 
+ Participate in Voice Chats of the Topics of Interest:
+
+* **Actor**: User
+* **Description**: This use case exists so that the user can participate in voice chats of the topics of interest.
+* **Preconditions and Postconditions**: In order to participate in voice chats, the Participant must first login into the application and select the Room with the topic he is interested in.
+
+* **Normal Flow**: 
+ *The Participant logs in;
+ *The Participant selects the Room with the Topic of Interest (that is the name of the room);
+ 
+ Visualize and Answer the Most Voted Questions:
+
+* **Actor**: Speaker
+* **Description**: This use case exists so that the speaker can visualize and answer the most voted (or all) questions asked during the conference.
+* **Preconditions and Postconditions**: In order to visualize and answer the questions, the Speaker must first login into the application and create or join in the conference room that he previously created. Then the questions will be displayed in the Conference page.
+
+* **Normal Flow**: 
+ *The Speaker logs in;
+ *The Speaker selects the time schedule icon;
+ *The Speaker joins in a previously created conference room or creates one;
+ *The Speaker can see the questions ordered by the number of votes and answer them.
+ 
+* **Alternative Flows and Exceptions**:
+ *The Speaker logs in;
+ *The Speaker selects the time schedule icon;
+ *The Speaker joins in a conference room that was not created by him;
+ *The Speaker is only allowed to watch the conference as a participant so he can't talk and answer the questions.
+ 
+ 
 ### User stories
 
 As a user (participant or speaker):
@@ -122,7 +181,7 @@ To document the architecture requires describing the decomposition of the system
 In this section you should start by briefly describing the overall components of the project and their interrelations. You should also describe how you solved typical problems you may have encountered, pointing to well-known architectural and design patterns, if applicable.
 
 ### Logical architecture
-Use case diagram: ![Alt Text](https://viewer.diagrams.net/?highlight=0000ff&edit=_blank&layers=1&nav=1&title=Untitled%20Diagram.drawio#R7VjbcpswEP0aHtMBBNh%2B9KVu2knbTJym7VNHgIzVCESF7Nj5%2Bkqw3Aw0TdM0mUz9kGiPxO5q9%2BwKZKB5vH8jcLp5z0PCDNsM9wZaGLaNLKT%2BauBQAJ7rFUAkaFhAVg2s6C0B0AR0S0OStRZKzpmkaRsMeJKQQLYwLAS%2FaS9bc9a2muKIdIBVgFkX%2FUxDuQHUMs164pTQaAOmxy5M%2BDi4jgTfJmDPsNE6%2FxXTMS51wfpsg0N%2B04DQawPNBeeyGMX7OWE6tGXYiueWA7OV34Ik8nceQBPLNcnYGa8td%2ByYwQlo2GG2JeUWckfloQzOjghJVaymjEaJgiRPDTTDIDGyVpZnWYoDmkSXem4xroGzfHph18gFhNHKsQ1OtZlg6xMtFsxQtECzkAqVasq1kYxvdSBna57IFXjmKHkjY6bXq2GeBKK3aRZ6izhrIeAxDWDMsE%2FYrMranDMu1FTCk9y%2BFPy6ooAFFpc4pkwz%2B4qIECe4dASctbtJKKOqIkf2DQiS8obwmEhxUEtg1naAIFBAIxBvajZWSzYNIlbEwlABUaW6ZoEaABF%2BkxT2f1I8B1K43t2kGPWRwn0MUrg9pPCYzJOya5HD%2B7HV%2FWymtilPgBJT3b1VKIio59Uogv841vRhXWnO41SlQcWwhNuPlBI8usx98VroQ907475%2FeLdV5gbMHJVGRd%2FK9aHCgDpA3hNTtVUzf6ObjdrEtbwucyusyVzvMYg76iPu3yGcL0oWLFVj8nFGlKHp%2Bdt7cQJ49%2BJZ4dlHrHD%2BISvevv80%2Ffjl8OEqZReb68U8%2Bk6%2B9b38zG1jOgvJjgZEj2c9qa6QElhgiSH3KyJ2eQ8pG4U%2F2CaeyTHVx8Nc05H6gWz3cGK4LUzaBJj05N%2FqyT9yHyn%2FPe85f5L%2FRu1n%2F%2FP%2FiwbgPLP8O%2F%2F4ZKgbxUt8ZXgYN44Oh%2BrD5skOh%2FHdH0EkCaf69kFnjuEs0yFvxqVdSIaNzPynZsieyi961SvTckD%2BqvP1Ck1KebGHBObCoSGcE0HVJnWxFliiNgzqTKsECn3jkVMCtcJcOjSlY5XFXknYuTfpvACozzARkIF3r%2FIyB4uIyIE1dj8xBGFY0l3bfl%2BW4dFzTnVploRyrDah0DFRCr%2FhqeaVyZEi9y5FxeY6ihQz8KGxLNULsmGH0djttTPo18T51Xo1KDyoK6AK7p8XxeReHTMVXPKAs%2Fs1zNPLy%2FNVt9YUFc90J9ONj2T0Fvv5lNkuuc5hdnxREdMwZPWBBjeKoMyo2s4dzWy4YzyAyAPtSon1BWGRyPoSFr3%2BCQ%3D%3D)
+Logical Archicture: ![Alt Text](https://github.com/FEUP-ESOF-2020-21/open-cx-t3g4/blob/master/imagens/Untitled%20Diagram%20-%20cópia.png)
 The purpose of this subsection is to document the high-level logical structure of the code, using a UML diagram with logical packages, without the worry of allocating to components, processes or machines.
 
 It can be beneficial to present the system both in a horizontal or vertical decomposition:
@@ -130,6 +189,7 @@ It can be beneficial to present the system both in a horizontal or vertical deco
 * vertical decomposition can define a hierarchy of subsystems that cover all layers of implementation.
 
 ### Physical architecture
+Physical Archicture: ![Alt Text](https://github.com/FEUP-ESOF-2020-21/open-cx-t3g4/blob/master/imagens/Untitled%20Diagram.png)
 The goal of this subsection is to document the high-level physical structure of the software system (machines, connections, software components installed, and their dependencies) using UML deployment diagrams or component diagrams (separate or integrated), showing the physical structure of the system.
 
 It should describe also the technologies considered and justify the selections made. Examples of technologies relevant for openCX are, for example, frameworks for mobile applications (Flutter vs ReactNative vs ...), languages to program with microbit, and communication with things (beacons, sensors, etc.).
