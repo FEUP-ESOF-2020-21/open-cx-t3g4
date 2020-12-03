@@ -68,6 +68,65 @@ Briefly describe each use case mentioning the following:
 
 Use case diagram: ![Alt Text](https://media.discordapp.net/attachments/757916505068404796/779361541602279424/Diagrama_em_branco.png?width=856&height=935)
 
+Ask a Question to Speaker:
+
+* **Actor**: Participant
+* **Description**: This use case exists so that the participant can ask questions to the Speaker during the conference.
+* **Preconditions and Postconditions**: In order to ask a question to the Speaker, the Participant must first login into the application and select the conference that is occuring in the schedule. Then, the question will be uploaded.
+
+* **Normal Flow**: 
+ *The Participant logs in;
+ *The Participant selects the time schedule icon;
+ *The Participant selects the Conference that is occuring;
+ *The Participant inserts a question in the Question area.
+ 
+* **Alternative Flows and Exceptions**:
+ *The Participant logs in;
+ *The Participant selects the time schedule icon;
+ *The Participant selects a Conference that is not occuring;
+ *That Conference will no be displayed.
+ 
+ Vote in the Most Interesting Questions:
+
+* **Actor**: Participant
+* **Description**: This use case exists so that the participant can vote in the most interesting questions asked during the conference so they are answered with priority.
+* **Preconditions and Postconditions**: In order to vote in a question, the Participant must first login into the application and select the conference that is occuring in the schedule. Then, a list with questions will be displayed in the conference page.
+
+* **Normal Flow**: 
+ *The Participant logs in;
+ *The Participant selects the time schedule icon;
+ *The Participant selects the Conference that is occuring;
+ *The Participant selects the underlined word "Vote" that is next to the desired question.
+ 
+ Participate in Voice Chats of the Topics of Interest:
+
+* **Actor**: User
+* **Description**: This use case exists so that the user can participate in voice chats of the topics of interest.
+* **Preconditions and Postconditions**: In order to participate in voice chats, the Participant must first login into the application and select the Room with the topic he is interested in.
+
+* **Normal Flow**: 
+ *The Participant logs in;
+ *The Participant selects the Room with the Topic of Interest (that is the name of the room);
+ 
+ Visualize and Answer the Most Voted Questions:
+
+* **Actor**: Speaker
+* **Description**: This use case exists so that the speaker can visualize and answer the most voted (or all) questions asked during the conference.
+* **Preconditions and Postconditions**: In order to visualize and answer the questions, the Speaker must first login into the application and create or join in the conference room that he previously created. Then the questions will be displayed in the Conference page.
+
+* **Normal Flow**: 
+ *The Speaker logs in;
+ *The Speaker selects the time schedule icon;
+ *The Speaker joins in a previously created conference room or creates one;
+ *The Speaker can see the questions ordered by the number of votes and answer them.
+ 
+* **Alternative Flows and Exceptions**:
+ *The Speaker logs in;
+ *The Speaker selects the time schedule icon;
+ *The Speaker joins in a conference room that was not created by him;
+ *The Speaker is only allowed to watch the conference as a participant so he can't talk and answer the questions.
+ 
+ 
 ### User stories
 
 As a user (participant or speaker):
