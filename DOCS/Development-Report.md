@@ -98,6 +98,25 @@ Ask a Question to Speaker:
  *The Participant selects the Conference that is occuring;
  *The Participant selects the underlined word "Vote" that is next to the desired question.
  
+ Register/ Login:
+
+* **Actor**: User
+* **Description**: This use case exists so that the user can register or login.
+* **Preconditions and Postconditions**: In order to login, the user needs to be registered and write the correct username and password. In order to register, the user needs to register with a valid email, username and password.
+
+* **Normal Flow**: 
+ *The User logs in;
+ **OR**
+ *The User writes a valid email, username and password;
+ *The User logs in;
+ 
+* **Alternative Flows and Exceptions**:
+ *The User writes the wrong password while loging in;
+ *The User can't log in;
+ **OR**
+ *The User writes an invalid email or username trying to register;
+ *The User is not registered;
+ 
  Participate in Voice Chats of the Topics of Interest:
 
 * **Actor**: User
@@ -105,8 +124,19 @@ Ask a Question to Speaker:
 * **Preconditions and Postconditions**: In order to participate in voice chats, the Participant must first login into the application and select the Room with the topic he is interested in.
 
 * **Normal Flow**: 
- *The Participant logs in;
- *The Participant selects the Room with the Topic of Interest (that is the name of the room);
+ *The User logs in;
+ *The User selects the Room with the Topic of Interest;
+ 
+ Choose Topics of Interest:
+
+* **Actor**: User
+* **Description**: This use case exists so that the user can choose topics of interest. He can do that by creating a chat room with those topics.
+* **Preconditions and Postconditions**: In order to choose the topics of interest, the Participant must first login into the application and select the option to create a chat room.
+
+* **Normal Flow**: 
+ *The User logs in;
+ *The User selects the option that is used to create a chat room;
+ *The User writes the topics he is interested in;
  
  Visualize and Answer the Most Voted Questions:
 
@@ -125,6 +155,19 @@ Ask a Question to Speaker:
  *The Speaker selects the time schedule icon;
  *The Speaker joins in a conference room that was not created by him;
  *The Speaker is only allowed to watch the conference as a participant so he can't talk and answer the questions.
+ 
+ Create a Conference Room to Talk about a Topic:
+
+* **Actor**: Speaker
+* **Description**: This use case exists so that the speaker can create a conference room.
+* **Preconditions and Postconditions**: In order to create a conference room, the Speaker must first login into the application and create one.
+
+* **Normal Flow**: 
+ *The Speaker logs in;
+ *The Speaker selects the time schedule icon;
+ *The Speaker selects the option to create a conference room;
+ *The Speaker chooses the name of the Conference (that should be the name of the topic) and the time schedule.
+ 
  
  
 ### User stories
