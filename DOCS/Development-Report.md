@@ -212,7 +212,11 @@ At the end, it is good to add a rough indication of the value of the user story 
 To better understand the context of the software system, it is very useful to have a simple UML class diagram with all the key concepts (names, attributes) and relationships involved of the problem domain addressed by your module.
 
 ![Alt Text](https://github.com/FEUP-ESOF-2020-21/open-cx-t3g4/blob/master/imagens/Problem%20Domain.png)
----
+
+Our App concepts are easy to understand. The class **Participant** represents the user, that may or may not be a Speaker. A Participant can send a direct message to other user, which is represented by its connection with the class **DirectMessage**. 
+The Participant is also connected to the class **Questions**, being that this connection expresses the possibility that each user has to ask questions during the conference where it can be chosen to be answered, and to the class **Conference**, that is related to the participation in the conference. 
+
+
 
 ## Architecture and Design
 The architecture of a software system encompasses the set of key decisions about its overall organization.
