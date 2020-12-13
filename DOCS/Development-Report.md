@@ -232,7 +232,7 @@ It can be beneficial to present the system both in a horizontal or vertical deco
 * vertical decomposition can define a hierarchy of subsystems that cover all layers of implementation.
 
 ### Physical architecture
-Physical Archicture: ![Alt Text](https://github.com/FEUP-ESOF-2020-21/open-cx-t3g4/blob/master/imagens/PhysicalArch.png)
+![Alt Text](https://github.com/FEUP-ESOF-2020-21/open-cx-t3g4/blob/master/imagens/PhysicalArch.png)
 
 The high-level physical structure of Lobby Jump can be represented in two main blocks that are connected with each other. Therefore, the users can install Lobby Jump on their smartphones and everytime it is necessary the app connects to the database via HTTPS requests where all the information is allocated. 
 In this project, we used Flutter, for the framework for the mobile application, and Firebase, for the database, being that is has a simple integration with Flutter.
