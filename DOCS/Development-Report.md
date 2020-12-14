@@ -69,7 +69,7 @@ Briefly describe each use case mentioning the following:
 ![Alt Text](https://media.discordapp.net/attachments/757916505068404796/779361541602279424/Diagrama_em_branco.png?width=856&height=935)
 
 
-Register/ Login:
+**Register/ Login:**
 
 * **Actor**: Participant
 * **Description**: This use case exists so that the participant can register or login.
@@ -90,7 +90,7 @@ Register/ Login:
  
  
 
-Ask a Question to Speaker:
+**Ask a Question to Speaker:**
 
 * **Actor**: Participant
 * **Description**: This use case exists so that the participant can ask questions to the Speaker during the conference.
@@ -108,7 +108,7 @@ Ask a Question to Speaker:
    * The Participant selects a Conference that is not occuring;
    * That Conference will no be displayed.
  
- Vote in the Most Interesting Questions:
+ **Vote in the Most Interesting Questions:**
 
 * **Actor**: Participant
 * **Description**: This use case exists so that the participant can vote in the most interesting questions asked during the conference so they are answered with priority.
@@ -121,7 +121,7 @@ Ask a Question to Speaker:
    * The Participant selects the underlined word "Vote" that is next to the desired question.
 
  
- Participate in Voice Chats of the Topics of Interest:
+ **Participate in Voice Chats of the Topics of Interest:**
 
 * **Actor**: Participant
 * **Description**: This use case exists so that the participant can participate in voice chats of the topics of interest.
@@ -131,7 +131,7 @@ Ask a Question to Speaker:
   * The Participant logs in;
   * The Participant selects the Room with the Topic of Interest;
 
- Choose Topics of Interest:
+ **Choose Topics of Interest:**
 
 * **Actor**: Participant
 * **Description**: This use case exists so that the user can choose topics of interest. He can do that by creating a chat room with those topics.
@@ -142,7 +142,7 @@ Ask a Question to Speaker:
    * The Participant selects the option that is used to create a chat room;
    * The Participant writes the topics he is interested in;
  
- Visualize and Answer the Most Voted Questions:
+ **Visualize and Answer the Most Voted Questions:**
 
 * **Actor**: Speaker
 * **Description**: This use case exists so that the speaker can visualize and answer the most voted (or all) questions asked during the conference.
@@ -160,7 +160,7 @@ Ask a Question to Speaker:
    * The Speaker joins in a conference room that was not created by him;
    * The Speaker is only allowed to watch the conference as a participant so he can't talk and answer the questions.
 
- Create a Conference Room to Talk about a Topic:
+ **Create a Conference Room to Talk about a Topic:**
 
 * **Actor**: Speaker
 * **Description**: This use case exists so that the speaker can create a conference room.
