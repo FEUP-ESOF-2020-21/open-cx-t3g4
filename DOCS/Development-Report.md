@@ -255,7 +255,6 @@ In this subsection please describe in more detail which, and how, user(s) story(
 ---
 
 ## Implementation
-Regular product increments are a good practice of product management.
 
 A few aspects of the code and the regular product increments can be found [here](https://github.com/FEUP-ESOF-2020-21/open-cx-t3g4/releases)
 
