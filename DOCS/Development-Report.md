@@ -76,17 +76,17 @@ Register/ Login:
 * **Preconditions and Postconditions**: In order to login, the participant needs to be registered and write the correct username and password. In order to register, the user needs to register with a valid email, username and password.
 
 * **Normal Flow**: 
- *The Participant logs in;
- **OR**
- *The Participant writes a valid email, username and password;
- *The Participant logs in;
+ * The Participant logs in;
+ * **OR**
+ * The Participant writes a valid email, username and password;
+ * The Participant logs in;
  
 * **Alternative Flows and Exceptions**:
-  *The Participant writes the wrong password while loging in;
-  *The Participant can't log in;
-  **OR**
-  *The Participant writes an invalid email or username trying to register;
-  *The Participant is not registered;
+ * The Participant writes the wrong password while loging in;
+ * The Participant can't log in;
+ * **OR**
+ * The Participant writes an invalid email or username trying to register;
+ * The Participant is not registered;
  
  
 
@@ -97,16 +97,16 @@ Ask a Question to Speaker:
 * **Preconditions and Postconditions**: In order to ask a question to the Speaker, the Participant must first login into the application and select the conference that is occuring in the schedule. Then, the question will be uploaded.
 
 * **Normal Flow**: 
- *The Participant logs in;
- *The Participant selects the time schedule icon;
- *The Participant selects the Conference that is occuring;
- *The Participant inserts a question in the Question area.
+ * The Participant logs in;
+ * The Participant selects the time schedule icon;
+ * The Participant selects the Conference that is occuring;
+ * The Participant inserts a question in the Question area.
  
 * **Alternative Flows and Exceptions**:
- *The Participant logs in;
- *The Participant selects the time schedule icon;
- *The Participant selects a Conference that is not occuring;
- *That Conference will no be displayed.
+ * The Participant logs in;
+ * The Participant selects the time schedule icon;
+ * The Participant selects a Conference that is not occuring;
+ * That Conference will no be displayed.
  
  Vote in the Most Interesting Questions:
 
@@ -115,10 +115,10 @@ Ask a Question to Speaker:
 * **Preconditions and Postconditions**: In order to vote in a question, the Participant must first login into the application and select the conference that is occuring in the schedule. Then, a list with questions will be displayed in the conference page.
 
 * **Normal Flow**: 
- *The Participant logs in;
- *The Participant selects the time schedule icon;
- *The Participant selects the Conference that is occuring;
- *The Participant selects the underlined word "Vote" that is next to the desired question.
+ * The Participant logs in;
+ * The Participant selects the time schedule icon;
+ * The Participant selects the Conference that is occuring;
+ * The Participant selects the underlined word "Vote" that is next to the desired question.
  
  
  Participate in Voice Chats of the Topics of Interest:
@@ -128,8 +128,8 @@ Ask a Question to Speaker:
 * **Preconditions and Postconditions**: In order to participate in voice chats, the participant must first login into the application and select the room with the topic he is interested in.
 
 * **Normal Flow**: 
- *The Participant logs in;
- *The Participant selects the Room with the Topic of Interest;
+ * The Participant logs in;
+ * The Participant selects the Room with the Topic of Interest;
  
  Choose Topics of Interest:
 
@@ -138,9 +138,9 @@ Ask a Question to Speaker:
 * **Preconditions and Postconditions**: In order to choose the topics of interest, the Participant must first login into the application and select the option to create a chat room.
 
 * **Normal Flow**: 
- *The Participant logs in;
- *The Participant selects the option that is used to create a chat room;
- *The Participant writes the topics he is interested in;
+ * The Participant logs in;
+ * The Participant selects the option that is used to create a chat room;
+ * The Participant writes the topics he is interested in;
  
  Visualize and Answer the Most Voted Questions:
 
@@ -149,16 +149,16 @@ Ask a Question to Speaker:
 * **Preconditions and Postconditions**: In order to visualize and answer the questions, the Speaker must first login into the application and create or join in the conference room that he previously created. Then the questions will be displayed in the Conference page.
 
 * **Normal Flow**: 
- *The Speaker logs in;
- *The Speaker selects the time schedule icon;
- *The Speaker joins in a previously created conference room or creates one;
- *The Speaker can see the questions ordered by the number of votes and answer them.
+ * The Speaker logs in;
+ * The Speaker selects the time schedule icon;
+ * The Speaker joins in a previously created conference room or creates one;
+ * The Speaker can see the questions ordered by the number of votes and answer them.
  
 * **Alternative Flows and Exceptions**:
- *The Speaker logs in;
- *The Speaker selects the time schedule icon;
- *The Speaker joins in a conference room that was not created by him;
- *The Speaker is only allowed to watch the conference as a participant so he can't talk and answer the questions.
+ * The Speaker logs in;
+ * The Speaker selects the time schedule icon;
+ * The Speaker joins in a conference room that was not created by him;
+ * The Speaker is only allowed to watch the conference as a participant so he can't talk and answer the questions.
  
  Create a Conference Room to Talk about a Topic:
 
@@ -167,10 +167,10 @@ Ask a Question to Speaker:
 * **Preconditions and Postconditions**: In order to create a conference room, the Speaker must first login into the application and create one.
 
 * **Normal Flow**: 
- *The Speaker logs in;
- *The Speaker selects the time schedule icon;
- *The Speaker selects the option to create a conference room;
- *The Speaker chooses the name of the Conference (that should be the name of the topic) and the time schedule.
+ * The Speaker logs in;
+ * The Speaker selects the time schedule icon;
+ * The Speaker selects the option to create a conference room;
+ * The Speaker chooses the name of the Conference (that should be the name of the topic) and the time schedule.
  
  
  
