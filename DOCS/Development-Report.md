@@ -68,6 +68,28 @@ Briefly describe each use case mentioning the following:
 
 ![Alt Text](https://media.discordapp.net/attachments/757916505068404796/779361541602279424/Diagrama_em_branco.png?width=856&height=935)
 
+
+Register/ Login:
+
+* **Actor**: Participant
+* **Description**: This use case exists so that the participant can register or login.
+* **Preconditions and Postconditions**: In order to login, the participant needs to be registered and write the correct username and password. In order to register, the user needs to register with a valid email, username and password.
+
+* **Normal Flow**: 
+ *The Participant logs in;
+ **OR**
+ *The Participant writes a valid email, username and password;
+ *The Participant logs in;
+ 
+* **Alternative Flows and Exceptions**:
+  *The Participant writes the wrong password while loging in;
+  *The Participant can't log in;
+  **OR**
+  *The Participant writes an invalid email or username trying to register;
+  *The Participant is not registered;
+ 
+ 
+
 Ask a Question to Speaker:
 
 * **Actor**: Participant
@@ -98,45 +120,27 @@ Ask a Question to Speaker:
  *The Participant selects the Conference that is occuring;
  *The Participant selects the underlined word "Vote" that is next to the desired question.
  
- Register/ Login:
-
-* **Actor**: User
-* **Description**: This use case exists so that the user can register or login.
-* **Preconditions and Postconditions**: In order to login, the user needs to be registered and write the correct username and password. In order to register, the user needs to register with a valid email, username and password.
-
-* **Normal Flow**: 
- *The User logs in;
- **OR**
- *The User writes a valid email, username and password;
- *The User logs in;
- 
-* **Alternative Flows and Exceptions**:
- *The User writes the wrong password while loging in;
- *The User can't log in;
- **OR**
- *The User writes an invalid email or username trying to register;
- *The User is not registered;
  
  Participate in Voice Chats of the Topics of Interest:
 
-* **Actor**: User
-* **Description**: This use case exists so that the user can participate in voice chats of the topics of interest.
-* **Preconditions and Postconditions**: In order to participate in voice chats, the Participant must first login into the application and select the Room with the topic he is interested in.
+* **Actor**: Participant
+* **Description**: This use case exists so that the participant can participate in voice chats of the topics of interest.
+* **Preconditions and Postconditions**: In order to participate in voice chats, the participant must first login into the application and select the room with the topic he is interested in.
 
 * **Normal Flow**: 
- *The User logs in;
- *The User selects the Room with the Topic of Interest;
+ *The Participant logs in;
+ *The Participant selects the Room with the Topic of Interest;
  
  Choose Topics of Interest:
 
-* **Actor**: User
+* **Actor**: Participant
 * **Description**: This use case exists so that the user can choose topics of interest. He can do that by creating a chat room with those topics.
 * **Preconditions and Postconditions**: In order to choose the topics of interest, the Participant must first login into the application and select the option to create a chat room.
 
 * **Normal Flow**: 
- *The User logs in;
- *The User selects the option that is used to create a chat room;
- *The User writes the topics he is interested in;
+ *The Participant logs in;
+ *The Participant selects the option that is used to create a chat room;
+ *The Participant writes the topics he is interested in;
  
  Visualize and Answer the Most Voted Questions:
 
