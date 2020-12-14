@@ -66,7 +66,7 @@ Briefly describe each use case mentioning the following:
 * **Normal Flow**. Provide a detailed description of the user actions and system responses that will take place during execution of the use case under normal, expected conditions. This dialog sequence will ultimately lead to accomplishing the goal stated in the use case name and description. This is best done as a numbered list of actions performed by the actor, alternating with responses provided by the system.
 * **Alternative Flows and Exceptions**. Document other, legitimate usage scenarios that can take place within this use case, stating any differences in the sequence of steps that take place. In addition, describe any anticipated error conditions that could occur during execution of the use case, and define how the system is to respond to those conditions.
 
-Use case diagram: ![Alt Text](https://media.discordapp.net/attachments/757916505068404796/779361541602279424/Diagrama_em_branco.png?width=856&height=935)
+![Alt Text](https://media.discordapp.net/attachments/757916505068404796/779361541602279424/Diagrama_em_branco.png?width=856&height=935)
 
 Ask a Question to Speaker:
 
@@ -211,8 +211,12 @@ At the end, it is good to add a rough indication of the value of the user story 
 
 To better understand the context of the software system, it is very useful to have a simple UML class diagram with all the key concepts (names, attributes) and relationships involved of the problem domain addressed by your module.
 
-UML Diagram: ![Alt Text](https://media.discordapp.net/attachments/757916505068404796/771764852929724476/Captura_de_ecra_2020-10-30_as_15.57.53.png?width=1430&height=935)
----
+![Alt Text](https://github.com/FEUP-ESOF-2020-21/open-cx-t3g4/blob/master/imagens/Problem%20Domain.png)
+
+Our App concepts are easy to understand. The class **Participant** represents the user, that may or may not be a Speaker. A Participant can send a direct message to other user, which is represented by its connection with the class **DirectMessage**. 
+The Participant is also connected to the class **Questions**, being that this connection expresses the possibility that each user has to ask questions during the conference where it can be chosen to be answered, and to the class **Conference**, that is related to the participation in the conference. 
+
+
 
 ## Architecture and Design
 The architecture of a software system encompasses the set of key decisions about its overall organization.
@@ -232,10 +236,12 @@ It can be beneficial to present the system both in a horizontal or vertical deco
 * vertical decomposition can define a hierarchy of subsystems that cover all layers of implementation.
 
 ### Physical architecture
-Physical Archicture: ![Alt Text](https://github.com/FEUP-ESOF-2020-21/open-cx-t3g4/blob/master/imagens/Untitled%20Diagram.png)
-The goal of this subsection is to document the high-level physical structure of the software system (machines, connections, software components installed, and their dependencies) using UML deployment diagrams or component diagrams (separate or integrated), showing the physical structure of the system.
+![Alt Text](https://github.com/FEUP-ESOF-2020-21/open-cx-t3g4/blob/master/imagens/PhysicalArch.png)
 
-It should describe also the technologies considered and justify the selections made. Examples of technologies relevant for openCX are, for example, frameworks for mobile applications (Flutter vs ReactNative vs ...), languages to program with microbit, and communication with things (beacons, sensors, etc.).
+The high-level physical structure of Lobby Jump can be represented in two main blocks that are connected with each other. Therefore, the users can install Lobby Jump on their smartphones and everytime it is necessary the app connects to the database via HTTPS requests where all the information is allocated. 
+
+In this project, we used Flutter, for the framework for the mobile application, and Firebase, for the database, being that is has a simple integration with Flutter.
+
 
 ### Prototype
 To help on validating all the architectural, design and technological decisions made, we usually implement a vertical prototype, a thin vertical slice of the system.
@@ -247,9 +253,7 @@ In this subsection please describe in more detail which, and how, user(s) story(
 ## Implementation
 Regular product increments are a good practice of product management.
 
-While not necessary, sometimes it might be useful to explain a few aspects of the code that have the greatest potential to confuse software engineers about how it works. Since the code should speak by itself, try to keep this section as short and simple as possible.
-
-Use cross-links to the code repository and only embed real fragments of code when strictly needed, since they tend to become outdated very soon.
+A few aspects of the code and the regular product increments can be found [here](https://github.com/FEUP-ESOF-2020-21/open-cx-t3g4/releases)
 
 ---
 ## Test
