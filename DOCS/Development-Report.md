@@ -41,7 +41,7 @@ Traditional conference meetings have promoted social interaction outside of ofic
 ---
 ## Elevator Pitch
 
-In this day and age, social interaction if arguably one of the most important and influential aspects of the digital world, so it's astonishing how little informal discussion is encouraged in existing virtual conference platforms. At Lobby Jump, our goal is to bring people together during those tedious moments between sessions, promoting discussions beyond the scope of the conference to provide a fully immersive digital conference experience. 
+In this day and age, social interaction is arguably one of the most important and influential aspects of the digital world, so it's astonishing how little informal discussion is encouraged in existing virtual conference platforms. At Lobby Jump, our goal is to bring people together during those tedious moments between sessions, promoting discussions beyond the scope of the conference to provide a fully immersive digital conference experience. 
 
 
 ---
