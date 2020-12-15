@@ -232,17 +232,21 @@ To document the architecture requires describing the decomposition of the system
 In this section you should start by briefly describing the overall components of the project and their interrelations. You should also describe how you solved typical problems you may have encountered, pointing to well-known architectural and design patterns, if applicable.
 
 ### Logical architecture
-Logical Archicture: ![Alt Text](https://github.com/FEUP-ESOF-2020-21/open-cx-t3g4/blob/master/imagens/Untitled%20Diagram%20-%20cópia.png)
-The purpose of this subsection is to document the high-level logical structure of the code, using a UML diagram with logical packages, without the worry of allocating to components, processes or machines.
+![Alt Text](https://github.com/FEUP-ESOF-2020-21/open-cx-t3g4/blob/master/imagens/Untitled%20Diagram%20-%20cópia.png)
 
-It can be beneficial to present the system both in a horizontal or vertical decomposition:
-* horizontal decomposition may define layers and implementation concepts, such as the user interface, business logic and concepts;
-* vertical decomposition can define a hierarchy of subsystems that cover all layers of implementation.
+The high-level logical structure of our code has a Model-View-Controller software design pattern.
+
+The Model package is where the app's data information can be found, containing data related to the user and the topics of interest, conferences and questions asked during them, chat rooms and direct messages. This data will be displayed in the View.
+
+The View package represents the concrete display of the app frames, widgets and data to the user that can be seen in the screen of the smartphone device.
+
+The Controller generates functionalities according to the actions executed by the user, sending and updating the data to display in the View and updating the data in the Model.
+
 
 ### Physical architecture
 ![Alt Text](https://github.com/FEUP-ESOF-2020-21/open-cx-t3g4/blob/master/imagens/PhysicalArch.png)
 
-The high-level physical structure of Lobby Jump can be represented in two main blocks that are connected with each other. Therefore, the users can install Lobby Jump on their smartphones and everytime it is necessary the app connects to the database via HTTPS requests where all the needed information is allocated. 
+The high-level physical structure of Lobby Jump can be represented in two main blocks that are connected with each other. Therefore, the users can install Lobby Jump on their smartphone devices and everytime it is necessary the app connects to the database via HTTPS requests where all the needed information is allocated. 
 
 In this project, we used Flutter, for the framework for the mobile application, and Firebase, for the database, being that it has a simple integration with Flutter.
 
