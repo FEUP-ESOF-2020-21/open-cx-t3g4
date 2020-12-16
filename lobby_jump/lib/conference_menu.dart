@@ -143,7 +143,7 @@ class ConferenceMenu extends StatelessWidget {
                           Join(auth: auth, onSignOut: () => onSignOut)));
             },
             child: Text(
-              "Join Meeting",
+              "See available meetings",
               style: TextStyle(color: Color.fromRGBO(88, 0, 0, 1)),
             ),
             color: Colors.white,
@@ -152,24 +152,6 @@ class ConferenceMenu extends StatelessWidget {
             ),
           ),
         ),
-        Container(
-          padding: EdgeInsets.only(bottom: 20, left: 10, right: 10),
-          width: 300.0,
-          height: 70.0,
-          child: new RaisedButton(
-            onPressed: () {
-              createChatRoom();
-            },
-            child: Text(
-              "Join Chat Room",
-              style: TextStyle(color: Color.fromRGBO(88, 0, 0, 1)),
-            ),
-            color: Colors.white,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(50.0),
-            ),
-          ),
-        )
       ]),
     );
   }
