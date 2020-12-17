@@ -11,6 +11,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:jitsi_meet/feature_flag/feature_flag_enum.dart';
 import 'package:jitsi_meet/jitsi_meet.dart';
 import 'package:jitsi_meet/jitsi_meeting_listener.dart';
+import 'joinmeeting.dart';
 
 class SeeConferences extends StatefulWidget {
   SeeConferences({this.auth, this.onSignOut});
@@ -48,25 +49,68 @@ class _SeeConferencesState extends State<SeeConferences> {
       }
     }
 
-    return Scaffold(
-        appBar: new AppBar(
-          leading: new Container(),
-          backgroundColor: Color.fromRGBO(88, 0, 0, 1),
-          elevation: 0,
-          actions: <Widget>[
-            new FlatButton(
-                onPressed: _signOut,
-                child: new Text('Logout',
-                    style: new TextStyle(fontSize: 17.0, color: Colors.white)))
-          ],
+    List<GestureDetector> _buildGridCards() {
+      int count = conferences.length; //rever
+      List<GestureDetector> cards = List.generate(
+        count,
+        (int index) => GestureDetector(
+          onTap: () => {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => Join(
+                        auth: widget.auth, onSignOut: () => widget.onSignOut)))
+          },
+          child: Card(
+            clipBehavior: Clip.antiAlias,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Padding(
+                  padding: EdgeInsets.fromLTRB(10.0, 12.0, 10.0, 8.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text(conferences.elementAt(index).conferenceName),
+                      SizedBox(height: 20.0),
+                      Text(conferences.elementAt(index).subject),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
         ),
+      );
+
+      return cards;
+    }
+
+    return Scaffold(
+      appBar: new AppBar(
+        leading: new Container(),
         backgroundColor: Color.fromRGBO(88, 0, 0, 1),
-        body: FirebaseAnimatedList(
+        elevation: 0,
+        actions: <Widget>[
+          new FlatButton(
+              onPressed: _signOut,
+              child: new Text('Logout',
+                  style: new TextStyle(fontSize: 17.0, color: Colors.white)))
+        ],
+      ),
+      backgroundColor: Color.fromRGBO(88, 0, 0, 1),
+      /* body: FirebaseAnimatedList(
             query: conferenceRef,
             itemBuilder: (BuildContext context, DataSnapshot snapshot,
                 Animation<double> animation, int index) {
               return new ListTile(title: Text(conferences[index].displayName));
-            }));
+            }) */
+      body: GridView.count(
+          crossAxisCount: 2,
+          padding: EdgeInsets.all(16.0),
+          childAspectRatio: 8.0 / 9.0,
+          children: _buildGridCards()),
+    );
   }
 
   void _onEntryAdded(Event event) {
