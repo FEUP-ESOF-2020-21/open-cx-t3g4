@@ -73,19 +73,24 @@ Briefly describe each use case mentioning the following:
 
 * **Actor**: Participant
 * **Description**: This use case exists so that the participant can register or login.
-* **Preconditions and Postconditions**: In order to login, the participant needs to be registered and write the correct username and password. In order to register, the user needs to register with a valid email, username and password.
+* **Preconditions and Postconditions**: In order to login, the participant needs to be registered and write the correct username and password. In order to register, the participant needs to register with a valid email, username and password.
 
 * **Normal Flow**: 
+   * **Login**
+   * The Participant writes the correct email and password;
    * The Participant logs in;
    * **OR**
-   * The Participant writes a valid email, username and password;
+   * **Register**
+   * The Participant writes a valid email and password;
    * The Participant logs in;
  
 * **Alternative Flows and Exceptions**:
+   * **Login**
    * The Participant writes the wrong password while loging in;
    * The Participant can't log in;
    * **OR**
-   * The Participant writes an invalid email or username trying to register;
+   * **Register**
+   * The Participant writes an invalid email trying to register;
    * The Participant is not registered;
  
  
@@ -94,19 +99,19 @@ Briefly describe each use case mentioning the following:
 
 * **Actor**: Participant
 * **Description**: This use case exists so that the participant can ask questions to the Speaker during the conference.
-* **Preconditions and Postconditions**: In order to ask a question to the Speaker, the Participant must first login into the application and select the conference that is occuring in the schedule. Then, the question will be uploaded.
+* **Preconditions and Postconditions**: In order to ask a question to the Speaker, the Participant must first login into the application and join the conference that is occuring. Then, the question must be written in the conference chat and it will be uploaded.
 
 * **Normal Flow**: 
    * The Participant logs in;
-   * The Participant selects the time schedule icon;
-   * The Participant selects the Conference that is occuring;
-   * The Participant inserts a question in the Question area.
+   * The Participant selects the Join Meeting button;
+   * The Participant writes the Conference ID;
+   * The Participant sends a question in the chat.
  
 * **Alternative Flows and Exceptions**:
    * The Participant logs in;
-   * The Participant selects the time schedule icon;
-   * The Participant selects a Conference that is not occuring;
-   * That Conference will no be displayed.
+   * The Participant selects the Join Meeting button;
+   * The Participant writes a wrong Conference ID;
+   * That Participant doesn't join the Conference.
  
  **Vote in the Most Interesting Questions:**
 
@@ -141,25 +146,8 @@ Briefly describe each use case mentioning the following:
    * The Participant logs in;
    * The Participant selects the option that is used to create a chat room;
    * The Participant writes the topics he is interested in;
- 
- **Visualize and Answer the Most Voted Questions:**
-
-* **Actor**: Speaker
-* **Description**: This use case exists so that the speaker can visualize and answer the most voted (or all) questions asked during the conference.
-* **Preconditions and Postconditions**: In order to visualize and answer the questions, the Speaker must first login into the application and create or join in the conference room that he previously created. Then the questions will be displayed in the Conference page.
-
-* **Normal Flow**: 
-   * The Speaker logs in;
-   * The Speaker selects the time schedule icon;
-   * The Speaker joins in a previously created conference room or creates one;
-   * The Speaker can see the questions ordered by the number of votes and answer them.
-
-* **Alternative Flows and Exceptions**:
-   * The Speaker logs in;
-   * The Speaker selects the time schedule icon;
-   * The Speaker joins in a conference room that was not created by him;
-   * The Speaker is only allowed to watch the conference as a participant so he can't talk and answer the questions.
-
+   
+   
  **Create a Conference Room to Talk about a Topic:**
 
 * **Actor**: Speaker
@@ -168,9 +156,25 @@ Briefly describe each use case mentioning the following:
 
 * **Normal Flow**: 
    * The Speaker logs in;
-   * The Speaker selects the time schedule icon;
-   * The Speaker selects the option to create a conference room;
-   * The Speaker chooses the name of the Conference (that should be the name of the topic) and the time schedule.
+   * The Speaker selects the Create Meeting button;
+   * The Speaker chooses the name of the Conference.
+   
+   
+ **Visualize and Answer the Most Voted Questions:**
+
+* **Actor**: Speaker
+* **Description**: This use case exists so that the speaker can visualize and answer the most voted (or all) questions asked during the conference.
+* **Preconditions and Postconditions**: In order to visualize and answer the questions, the Speaker must first login into the application and create a conference room. Then the questions will be displayed in the Conference chat.
+
+* **Normal Flow**: 
+   * The Speaker logs in;
+   * The Speaker creates a Conference;
+   * The Speaker can see the questions in the chat and answer them.
+
+* **Alternative Flows and Exceptions**:
+   * The Speaker logs in;
+   * The Speaker joins a Conference that was not created by him;
+   * The Speaker is only allowed to watch the conference as a participant so he can't answer the questions.
  
  
  
