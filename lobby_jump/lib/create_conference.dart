@@ -1,5 +1,7 @@
 import 'dart:io';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:lobby_jump/models/conference.dart';
 import 'auth.dart';
 import 'initial_page.dart';
 import 'package:flutter/cupertino.dart';
@@ -19,6 +21,7 @@ class CreateConference extends StatefulWidget {
 }
 
 class _CreateConferenceState extends State<CreateConference> {
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final serverText = TextEditingController();
   final roomText = TextEditingController(text: "plugintestroom");
   final subjectText = TextEditingController(text: "My Plugin Test Meeting");
@@ -27,6 +30,9 @@ class _CreateConferenceState extends State<CreateConference> {
   var isAudioOnly = true;
   var isAudioMuted = true;
   var isVideoMuted = true;
+  Conference conference;
+
+  DatabaseReference conferenceRef;
 
   @override
   void initState() {
@@ -36,6 +42,10 @@ class _CreateConferenceState extends State<CreateConference> {
         onConferenceJoined: _onConferenceJoined,
         onConferenceTerminated: _onConferenceTerminated,
         onError: _onError));
+    conference = Conference("", "", "", false, false, true);
+
+    final FirebaseDatabase database = FirebaseDatabase.instance;
+    conferenceRef = database.reference().child('conferences');
   }
 
   @override
@@ -79,87 +89,96 @@ class _CreateConferenceState extends State<CreateConference> {
             horizontal: 16.0,
           ),
           child: SingleChildScrollView(
-            child: Column(
-              children: <Widget>[
-                SizedBox(
-                  height: 16.0,
-                ),
-                TextField(
-                  controller: roomText,
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: "Conference Name",
+            child: Form(
+              key: formKey,
+              child: Column(
+                children: <Widget>[
+                  SizedBox(
+                    height: 16.0,
                   ),
-                ),
-                SizedBox(
-                  height: 16.0,
-                ),
-                TextField(
-                  controller: subjectText,
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: "Subject",
-                  ),
-                ),
-                SizedBox(
-                  height: 16.0,
-                ),
-                TextField(
-                  controller: nameText,
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: "Display Name",
-                  ),
-                ),
-                SizedBox(
-                  height: 16.0,
-                ),
-                CheckboxListTile(
-                  title: Text("Audio Only"),
-                  value: isAudioOnly,
-                  onChanged: _onAudioOnlyChanged,
-                ),
-                SizedBox(
-                  height: 16.0,
-                ),
-                CheckboxListTile(
-                  title: Text("Audio Muted"),
-                  value: isAudioMuted,
-                  onChanged: _onAudioMutedChanged,
-                ),
-                SizedBox(
-                  height: 16.0,
-                ),
-                CheckboxListTile(
-                  title: Text("Video Muted"),
-                  value: isVideoMuted,
-                  onChanged: _onVideoMutedChanged,
-                ),
-                Divider(
-                  height: 48.0,
-                  thickness: 2.0,
-                ),
-                SizedBox(
-                  height: 64.0,
-                  width: double.maxFinite,
-                  child: RaisedButton(
-                    onPressed: () {
-                      _joinMeeting();
-                    },
-                    child: Text(
-                      "Create Meeting",
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    color: Color.fromRGBO(88, 0, 0, 1),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(50.0),
+                  TextFormField(
+                    onChanged: (val) => conference.conferenceName = val,
+                    validator: (val) => val == "" ? val : null,
+                    controller: roomText,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: "Conference Name",
                     ),
                   ),
-                ),
-                SizedBox(
-                  height: 48.0,
-                ),
-              ],
+                  SizedBox(
+                    height: 16.0,
+                  ),
+                  TextFormField(
+                    onChanged: (val) => conference.subject = val,
+                    validator: (val) => val == "" ? val : null,
+                    controller: subjectText,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: "Subject",
+                    ),
+                  ),
+                  SizedBox(
+                    height: 16.0,
+                  ),
+                  TextFormField(
+                    onChanged: (val) => conference.displayName = val,
+                    validator: (val) => val == "" ? val : null,
+                    controller: nameText,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: "Display Name",
+                    ),
+                  ),
+                  SizedBox(
+                    height: 16.0,
+                  ),
+                  CheckboxListTile(
+                    title: Text("Audio Only"),
+                    value: isAudioOnly,
+                    onChanged: _onAudioOnlyChanged,
+                  ),
+                  SizedBox(
+                    height: 16.0,
+                  ),
+                  CheckboxListTile(
+                    title: Text("Audio Muted"),
+                    value: isAudioMuted,
+                    onChanged: _onAudioMutedChanged,
+                  ),
+                  SizedBox(
+                    height: 16.0,
+                  ),
+                  CheckboxListTile(
+                    title: Text("Video Muted"),
+                    value: isVideoMuted,
+                    onChanged: _onVideoMutedChanged,
+                  ),
+                  Divider(
+                    height: 48.0,
+                    thickness: 2.0,
+                  ),
+                  SizedBox(
+                    height: 64.0,
+                    width: double.maxFinite,
+                    child: RaisedButton(
+                      onPressed: () {
+                        _joinMeeting();
+                      },
+                      child: Text(
+                        "Create Meeting",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      color: Color.fromRGBO(88, 0, 0, 1),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(50.0),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 48.0,
+                  ),
+                ],
+              ),
             ),
           ),
         ),
@@ -170,22 +189,32 @@ class _CreateConferenceState extends State<CreateConference> {
   _onAudioOnlyChanged(bool value) {
     setState(() {
       isAudioOnly = value;
+      conference.audioOnly = value;
     });
   }
 
   _onAudioMutedChanged(bool value) {
     setState(() {
       isAudioMuted = value;
+      conference.audioOn = value;
     });
   }
 
   _onVideoMutedChanged(bool value) {
     setState(() {
       isVideoMuted = value;
+      conference.videoOn = value;
     });
   }
 
   _joinMeeting() async {
+    final FormState form = formKey.currentState;
+    if (form.validate()) {
+      form.save();
+      form.reset();
+      conferenceRef.push().set(conference.toJson());
+    }
+    
     String serverUrl =
         serverText.text?.trim()?.isEmpty ?? "" ? null : serverText.text;
 
@@ -235,6 +264,7 @@ class _CreateConferenceState extends State<CreateConference> {
     } catch (error) {
       debugPrint("error: $error");
     }
+    
   }
 
   static final Map<RoomNameConstraintType, RoomNameConstraint>

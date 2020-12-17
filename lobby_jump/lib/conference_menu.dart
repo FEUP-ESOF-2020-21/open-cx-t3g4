@@ -6,6 +6,7 @@ import 'package:lobby_jump/create_conference.dart';
 import 'auth.dart';
 import 'initial_page.dart';
 import 'joinmeeting.dart';
+import 'see_conferences.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:jitsi_meet/feature_flag/feature_flag_enum.dart';
 import 'package:jitsi_meet/jitsi_meet.dart';
@@ -136,11 +137,17 @@ class ConferenceMenu extends StatelessWidget {
           height: 70.0,
           child: new RaisedButton(
             onPressed: () {
+              /*
               Navigator.push(
                   context,
                   MaterialPageRoute(
                       builder: (context) =>
-                          Join(auth: auth, onSignOut: () => onSignOut)));
+                          Join(auth: auth, onSignOut: () => onSignOut)));*/
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => SeeConferences(
+                          auth: auth, onSignOut: () => onSignOut)));
             },
             child: Text(
               "See available meetings",
