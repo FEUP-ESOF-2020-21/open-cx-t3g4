@@ -6,6 +6,7 @@ import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
 import 'package:lobby_jump/models/conference.dart';
 import 'auth.dart';
+import 'survey.dart';
 import 'initial_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:jitsi_meet/feature_flag/feature_flag_enum.dart';
@@ -31,7 +32,7 @@ class _SeeConferencesState extends State<SeeConferences> {
     final FirebaseDatabase database = FirebaseDatabase.instance;
     conferenceRef = database.reference().child('conferences');
     conferenceRef.onChildAdded.listen(_onEntryAdded);
-    conferenceRef.onChildChanged.listen(_onEntryChanged);
+    //conferenceRef.onChildChanged.listen(_onEntryChanged);
   }
 
   @override
@@ -58,8 +59,8 @@ class _SeeConferencesState extends State<SeeConferences> {
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => Join(
-                        auth: widget.auth, onSignOut: () => widget.onSignOut)))
+                    builder: (context) => Survey(
+                        auth: widget.auth, onSignOut: () => widget.onSignOut, conference:conferences.elementAt(index))))
           },
           child: Card(
             clipBehavior: Clip.antiAlias,

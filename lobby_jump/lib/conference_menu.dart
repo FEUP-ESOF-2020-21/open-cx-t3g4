@@ -137,12 +137,6 @@ class ConferenceMenu extends StatelessWidget {
           height: 70.0,
           child: new RaisedButton(
             onPressed: () {
-              /*
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) =>
-                          Join(auth: auth, onSignOut: () => onSignOut)));*/
               Navigator.push(
                   context,
                   MaterialPageRoute(

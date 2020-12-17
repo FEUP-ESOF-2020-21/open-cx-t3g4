@@ -42,7 +42,7 @@ class _CreateConferenceState extends State<CreateConference> {
         onConferenceJoined: _onConferenceJoined,
         onConferenceTerminated: _onConferenceTerminated,
         onError: _onError));
-    conference = Conference("", "", "", false, false, true);
+    conference = Conference("", "", "", false, false, true, {});
 
     final FirebaseDatabase database = FirebaseDatabase.instance;
     conferenceRef = database.reference().child('conferences');
@@ -212,9 +212,15 @@ class _CreateConferenceState extends State<CreateConference> {
     if (form.validate()) {
       form.save();
       form.reset();
+      conference.topics.addAll({"Computers":0});
+      conference.topics.addAll({"Science":0});
+      conference.topics.addAll({"Robots":0});
+      conference.topics.addAll({"Virtual Reality":0});
+      conference.topics.addAll({"Phones":0});
+
       conferenceRef.push().set(conference.toJson());
     }
-    
+
     String serverUrl =
         serverText.text?.trim()?.isEmpty ?? "" ? null : serverText.text;
 
@@ -264,7 +270,6 @@ class _CreateConferenceState extends State<CreateConference> {
     } catch (error) {
       debugPrint("error: $error");
     }
-    
   }
 
   static final Map<RoomNameConstraintType, RoomNameConstraint>

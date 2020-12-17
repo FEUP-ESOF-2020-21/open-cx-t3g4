@@ -10,8 +10,10 @@ class Conference {
   bool audioOn;
   bool videoOn;
 
+  Map<dynamic, dynamic> topics;//TODO ajeitar tipos
+
   Conference(this.conferenceName, this.subject, this.displayName,
-      this.audioOnly, this.audioOn, this.videoOn);
+      this.audioOnly, this.audioOn, this.videoOn, this.topics);
 
   Conference.fromSnapshot(DataSnapshot snapshot)
       : key = snapshot.key,
@@ -20,7 +22,8 @@ class Conference {
         displayName = snapshot.value["displayName"],
         audioOnly = snapshot.value["audioOnly"],
         audioOn = snapshot.value["audioOn"],
-        videoOn = snapshot.value["videoOn"];
+        videoOn = snapshot.value["videoOn"],
+        topics = snapshot.value["topics"];
 
   toJson() {
     return {
@@ -29,7 +32,8 @@ class Conference {
       "displayName": displayName,
       "audioOnly": audioOnly,
       "audioOn": audioOn,
-      "videoOn": videoOn
+      "videoOn": videoOn,
+      "topics": topics
     };
   }
 }
