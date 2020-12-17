@@ -92,8 +92,55 @@ Briefly describe each use case mentioning the following:
    * **Register**
    * The Participant writes an invalid email trying to register;
    * The Participant is not registered;
- 
- 
+   
+   
+   
+**Create a Conference Room to Talk about a Topic:**
+
+* **Actor**: Speaker
+* **Description**: This use case exists so that the speaker can create a conference room.
+* **Preconditions and Postconditions**: In order to create a conference room, the Speaker must first login into the application and create one.
+
+* **Normal Flow**: 
+   * The Speaker logs in;
+   * The Speaker selects the Create Meeting button;
+   * The Speaker chooses the name of the Conference and selects 5 topics he thinks the participants are interested in.
+   
+   
+   
+   
+ **Choose Topics of Interest:**
+
+* **Actor**: Participant
+* **Description**: This use case exists so that the user can choose topics of interest.
+* **Preconditions and Postconditions**: In order to choose the topics of interest, the Participant must first login into the application and join a meeting. Then he must choose 3 of the 5 topics of interest provided by the Speaker.
+
+* **Normal Flow**: 
+   * The Participant logs in;
+   * The Participant selects the join meeting button;
+   * The Participant chooses 3 of the 5 topics os interest provided by the Speaker;
+   
+   
+   
+ **Participate in Voice Chats of the Topics of Interest:**
+
+* **Actor**: Participant
+* **Description**: This use case exists so that the participant can participate in voice chats of the topics of interest.
+* **Preconditions and Postconditions**: In order to participate in voice chats, the participant must first login into the application, join a meeting, select 3 of the 5 topics he is interested in and wait till the end of the conference.
+
+* **Normal Flow**: 
+  * The Participant logs in;
+  * The Participant selects the join chat room button;
+  * The Participant selects the Chat Room he is interested in.
+  * **OR**
+  * The Participant logs in;
+  * The Participant selects the join meeting button;
+  * The Participant chooses 3 of the 5 topics os interest provided by the Speaker;
+  * The Participant wait for the conference to end;
+  * The Participant selects the join char room button in the main menu;
+  * The Participant selects the chat room with the topics he voted in the beginning of the conference (if it is available).
+  
+  
 
 **Ask a Question to Speaker:**
 
@@ -112,6 +159,8 @@ Briefly describe each use case mentioning the following:
    * The Participant selects the Join Meeting button;
    * The Participant writes a wrong Conference ID;
    * That Participant doesn't join the Conference.
+   
+   
  
  **Vote in the Most Interesting Questions:**
 
@@ -126,39 +175,7 @@ Briefly describe each use case mentioning the following:
    * The Participant selects the underlined word "Vote" that is next to the desired question.
 
  
- **Participate in Voice Chats of the Topics of Interest:**
 
-* **Actor**: Participant
-* **Description**: This use case exists so that the participant can participate in voice chats of the topics of interest.
-* **Preconditions and Postconditions**: In order to participate in voice chats, the participant must first login into the application and select the room with the topic he is interested in.
-
-* **Normal Flow**: 
-  * The Participant logs in;
-  * The Participant selects the Room with the Topic of Interest;
-
- **Choose Topics of Interest:**
-
-* **Actor**: Participant
-* **Description**: This use case exists so that the user can choose topics of interest. He can do that by creating a chat room with those topics.
-* **Preconditions and Postconditions**: In order to choose the topics of interest, the Participant must first login into the application and select the option to create a chat room.
-
-* **Normal Flow**: 
-   * The Participant logs in;
-   * The Participant selects the option that is used to create a chat room;
-   * The Participant writes the topics he is interested in;
-   
-   
- **Create a Conference Room to Talk about a Topic:**
-
-* **Actor**: Speaker
-* **Description**: This use case exists so that the speaker can create a conference room.
-* **Preconditions and Postconditions**: In order to create a conference room, the Speaker must first login into the application and create one.
-
-* **Normal Flow**: 
-   * The Speaker logs in;
-   * The Speaker selects the Create Meeting button;
-   * The Speaker chooses the name of the Conference.
-   
    
  **Visualize and Answer the Most Voted Questions:**
 
