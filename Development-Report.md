@@ -99,6 +99,30 @@ Ask a Question to Speaker:
  *The Participant selects the Conference that is occuring;
  *The Participant selects the underlined word "Vote" that is next to the desired question.
  
+ 
+See the available conferences:
+
+* **Actor**: Participant
+* **Description**: This use case exists so that the participant becomes aware of the different conferences that they can join.
+* **Preconditions and Postconditions**: In order to see the available conferences, the Participant must first login into the application. Then, they select the button "See available conferences" which will open a page with all the conferences occuring.
+
+* **Normal Flow**:
+ *The Participant logs in;
+ *The Participant selects the "See available conferences".
+ 
+ Send message in a chat room:
+ 
+ * **Actor**: Participant
+ * **Description**: This use case exists so that the participant can communicate with others in a chat room.
+ * **Preconditions and Postconditions**: In order to write in a chat room, the Participant must first login into the application and be in a conference. When they leave the conference by pressing the red button below, for a break or because it ended, they see all the chat rooms available for them. The Participants chooses one and writes a message in there.
+ 
+ * **Normal Flow**:
+  *The Participant logs in;
+  *The Participant joins a conference;
+  *The Participant leaves the conference (either due to being a cofe break or ending);
+  *The Participant chooses a chatroom;
+  *The Participant writes and sends the message.
+ 
  Register/ Login:
 
 * **Actor**: Participant
@@ -118,6 +142,25 @@ If the participant is already registered, they can go directly to the login scre
  **OR**
  *The Participant writes an invalid email trying to register;
  *The Participant is not registered;
+ 
+ Log out:
+ 
+* **Actor**: Participant
+* **Description**:This use case exists so that the Participant can log out of the aplication.
+* **Preconditions and Postconditions**: In order to log out, the user needs to be logged in. In order to log out of the aplication, if the user is not in a conference, in the top right corner of the screen there is a button with "Log out". Otherwise, the user leaves the conference by pressing the red button below, either press the house button in the top right corner or join a chatroom and leave.
+
+* **Normal Flow**:
+ *The Participant presses the "log out" button on the top right corner of the screen.
+ 
+* **Alternative Flows and Exceptions**:
+ *The Participant is in a conference;
+ *The Participant leaves the conference;
+ *The Participant touches the house in the top right corner;
+ *The Participant presses the "log out" button on the top right corner of the screen.
+ **OR**
+ *The Participant is in a chat room;
+ *The Participant leaves the chat room;
+ *The Participant presses the "log out" button on the top right corner of the screen.
  
  Participate in Voice Chats of the Topics of Interest:
 
