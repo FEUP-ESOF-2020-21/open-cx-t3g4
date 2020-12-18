@@ -140,12 +140,20 @@ Start by contextualizing your module, describing the main concepts, terms, roles
    * The Participant joins in a Conference;
    * The Participant selects the chat balloon icon;
    * The Participant sends a question in the chat.
- 
-* **Alternative Flows and Exceptions**:
-   * The Participant logs in;
-   * The Participant selects the Join Meeting button;
-   * The Participant writes a wrong Conference ID;
-   * That Participant doesn't join the Conference.
+   
+
+   
+ **Visualize and Answer Questions:**
+
+* **Actor**: Speaker
+* **Description**: This use case exists so that the speaker can visualize and answer the  questions asked during the conference.
+* **Preconditions and Postconditions**: In order to visualize and answer the questions, the Speaker must first login into the application and create a conference room. Then the questions will be displayed in the Conference chat.
+
+* **Normal Flow**: 
+   * The Speaker logs in;
+   * The Speaker selects the Create Meeting button;
+   * The Speaker chooses the name of the Conference and selects 5 topics he thinks the participants are interested in.
+   * The Speaker can see the questions in the chat and answer them.
    
    
  
@@ -161,24 +169,7 @@ Start by contextualizing your module, describing the main concepts, terms, roles
    * The Participant selects the Conference that is occuring;
    * The Participant selects the underlined word "Vote" that is next to the desired question.
 
- 
 
-   
- **Visualize and Answer the Most Voted Questions:**
-
-* **Actor**: Speaker
-* **Description**: This use case exists so that the speaker can visualize and answer the most voted (or all) questions asked during the conference.
-* **Preconditions and Postconditions**: In order to visualize and answer the questions, the Speaker must first login into the application and create a conference room. Then the questions will be displayed in the Conference chat.
-
-* **Normal Flow**: 
-   * The Speaker logs in;
-   * The Speaker creates a Conference;
-   * The Speaker can see the questions in the chat and answer them.
-
-* **Alternative Flows and Exceptions**:
-   * The Speaker logs in;
-   * The Speaker joins a Conference that was not created by him;
-   * The Speaker is only allowed to watch the conference as a participant so he can't answer the questions.
  
  
  
@@ -189,23 +180,23 @@ Start by contextualizing your module, describing the main concepts, terms, roles
 ![Alt Text](https://github.com/FEUP-ESOF-2020-21/open-cx-t3g4/blob/master/imagens/User%20Story%20Map.png)
 
 
-As a user (participant or speaker):
-* As a user, I want to register my account, so that I can access the system;
-* As a user, I want to log in to my account, so that I can access the system;
-* As a user, I want to log out my account, so that I can terminate my session;
-* As a user, I can request a password reminder, so that I can log in if I forget mine;
-* As a user, I want to edit my account, so that I can update my personal information;
-* As a user, I want to see the list of available conferences, so that I can choose one; 
-* As a user, I want to choose chatrooms dedicated to my favorite topics, so that I can discuss about them;
-* As a user, I want to see my own time schedule, so that I can know what to attend;
-* As a user, I want to talk to another user through direct messages, so that I can discuss with him;
-* As a user, I want to choose tags related to the topics that I’m interested in, so that I can discuss about them;
-* As a user, I want to be able to talk when it’s my turn, so that I can give my point;
-* As a user, I want to hear other users one at a time, so that I can know their point;
-
 As a participant:
+* As a participant, I want to register my account, so that I can access the system;
+* As a participant, I want to log in to my account, so that I can access the system;
+* As a participant, I want to log out my account, so that I can terminate my session;
+* As a participant, I want to choose chatrooms dedicated to my favorite topics, so that I can discuss about them;
+* As a participant, I want to talk to another user through direct messages, so that I can discuss with him;
+* As a participant, I want to choose tags related to the topics that I’m interested in, so that I can discuss about them;
 * As a participant, I want to be able to ask questions to the speaker, so that I can expose my doubts;
-* As a participant, I want to vote on the most interesting questions, so that they can be answered;
+
+* As a participant, I want to be able to ask questions to the speaker, so that I can expose my doubts;
+* As a participant, I can request a password reminder, so that I can log in if I forget mine;
+* As a participant, I want to edit my account, so that I can update my personal information;
+* As a participant, I want to see the list of available conferences, so that I can choose one; 
+* As a participant, I want to see my own time schedule, so that I can know what to attend;
+* As a participant, I want to be able to talk when it’s my turn, so that I can give my point;
+* As a participant, I want to hear other users one at a time, so that I can know their point;
+
 
 As a speaker:
 * As a speaker, I want to see the most interesting questions, so that I can answer it;
