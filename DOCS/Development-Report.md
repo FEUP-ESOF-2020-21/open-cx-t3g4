@@ -177,7 +177,7 @@ Start by contextualizing your module, describing the main concepts, terms, roles
 
 
 **User Story Map:**
-![Alt Text](https://github.com/FEUP-ESOF-2020-21/open-cx-t3g4/blob/master/imagens/User%20Story%20Map.png)
+![Alt Text](https://github.com/FEUP-ESOF-2020-21/open-cx-t3g4/blob/master/imagens/UserStoryMap.png)
 
 
 As a participant:
