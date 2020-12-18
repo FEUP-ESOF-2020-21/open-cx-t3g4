@@ -152,7 +152,7 @@ class _SurveyState extends State<Survey> {
       print(widget.conference.conferenceName);
       var options = JitsiMeetingOptions()..room = widget.conference.conferenceName;
 
-      //await JitsiMeet.joinMeeting(options);
+      await JitsiMeet.joinMeeting(options);
               Navigator.push(
                   context,
                   MaterialPageRoute(

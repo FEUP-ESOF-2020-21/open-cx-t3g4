@@ -30,9 +30,9 @@ class _ChatroomsState extends State<Chatrooms> {
   List<Conference> conferences = List();
   Map<String, dynamic> topics;
   Conference conference;
-  Iterable<String> topictext;
+  var topictext;
   Map<dynamic, dynamic> values;
-  SplayTreeMap<String, dynamic> aux=SplayTreeMap<String, dynamic>();
+  SplayTreeMap<String, dynamic> aux = SplayTreeMap<String, dynamic>();
 
   @override
   void initState() {
@@ -49,10 +49,11 @@ class _ChatroomsState extends State<Chatrooms> {
 
     var topicsref = conferenceRef.child(widget.conferenceKey).child('topics');
 
-    topicsref.once().then((DataSnapshot snapshot) {
-      values = snapshot.value;
-    });
+    topicsref.once().then((DataSnapshot snapshot) async {
+      values = await snapshot.value;
+      topictext =values.keys;
 
+    });
   }
 
   @override
