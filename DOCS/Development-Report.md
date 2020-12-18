@@ -234,12 +234,16 @@ At the end, it is good to add a rough indication of the value of the user story 
 
 ### Domain model
 
-To better understand the context of the software system, it is very useful to have a simple UML class diagram with all the key concepts (names, attributes) and relationships involved of the problem domain addressed by your module.
+To better understand the context of the software system, it is very useful to have a simple UML class diagram with all the key concepts and relationships involved of the problem domain addressed by your module.
 
-![Alt Text](https://github.com/FEUP-ESOF-2020-21/open-cx-t3g4/blob/master/imagens/Problem%20Domain.png)
+![Alt Text](https://github.com/FEUP-ESOF-2020-21/open-cx-t3g4/blob/master/imagens/PDomain.png)
 
-Our App concepts are easy to understand. The class **Participant** represents the user, that may or may not be a Speaker. A Participant can send a direct message to other user, which is represented by its connection with the class **DirectMessage**. 
-The Participant is also connected to the class **Questions**, being that this connection expresses the possibility that each user has to ask questions during the conference where it can be chosen to be answered, and to the class **Conference**, that is related to the participation in the conference. 
+Our App concepts are easy to understand. 
+* The class **Participant** represents the user, that may or may not be a Speaker. A Participant has a name and a password as attributes and he can watch as many conferences as he desires.
+* The **Conference** can be watched by an unlimited number of Participants and it has an associated ID which is used by the Participants to join in. During the Conference, a Participant can ask all the **Questions** he wants to ask. 
+* The Conference is previously created by the **Speaker**, who can create all the conferences he wants and select 5 **InterestTopics** before their beginning.
+* The Participants can choose up to 3 Interest Topics when they join the Conference and when it ends **Chat Rooms** with those topics as themes will be created.
+* The Chat Rooms can have an unlimited number of Participants and during those chat rooms they are able to talk through **Direct Messages**.
 
 
 
