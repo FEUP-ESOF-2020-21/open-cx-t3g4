@@ -213,17 +213,9 @@ As a speaker:
 * As a speaker, I want to create a conference room, so that I can talk about a topic.
 
 
-**INVEST in good user stories**.
-You may add more details after, but the shorter and complete, the better. In order to decide if the user story is good, please follow the [INVEST guidelines](https://xp123.com/articles/invest-in-good-stories-and-smart-tasks/).
+The User Stories, its interface mockups, acceptance tests and Value and Effort can be seen in [Here](https://github.com/FEUP-ESOF-2020-21/open-cx-t3g4/projects/1)
 
-**User interface mockups**.
-[App Mockups](https://xd.adobe.com/view/3a8c6e96-b688-49b7-b6e0-85f1fcdcfaf6-6fdf/) In Progress
 
-**Acceptance tests**.
-For each user story you should write also the acceptance tests (textually in Gherkin), i.e., a description of scenarios (situations) that will help to confirm that the system satisfies the requirements addressed by the user story.
-
-**Value and effort**.
-At the end, it is good to add a rough indication of the value of the user story to the customers (e.g. [MoSCoW](https://en.wikipedia.org/wiki/MoSCoW_method) method) and the team should add an estimation of the effort to implement it, for example, using t-shirt sizes (XS, S, M, L, XL).
 
 ### Domain model
 
