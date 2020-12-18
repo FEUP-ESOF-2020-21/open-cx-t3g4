@@ -2,6 +2,7 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 
 import 'package:jitsi_meet/jitsi_meet.dart';
+import 'package:lobby_jump/chatrooms.dart';
 import 'package:lobby_jump/models/conference.dart';
 
 import 'auth.dart';
@@ -151,7 +152,12 @@ class _SurveyState extends State<Survey> {
       print(widget.conference.conferenceName);
       var options = JitsiMeetingOptions()..room = widget.conference.conferenceName;
 
-      await JitsiMeet.joinMeeting(options);
+      //await JitsiMeet.joinMeeting(options);
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => Chatrooms(
+                          auth: widget.auth, onSignOut: () => widget.onSignOut, conferenceKey: widget.conference.key)));
     } catch (error) {
       debugPrint("error: $error");
     }

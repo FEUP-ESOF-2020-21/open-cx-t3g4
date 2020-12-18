@@ -144,7 +144,7 @@ class ConferenceMenu extends StatelessWidget {
                           auth: auth, onSignOut: () => onSignOut)));
             },
             child: Text(
-              "See available meetings",
+              "See available conferences",
               style: TextStyle(color: Color.fromRGBO(88, 0, 0, 1)),
             ),
             color: Colors.white,
