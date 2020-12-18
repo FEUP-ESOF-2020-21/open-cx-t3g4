@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:lobby_jump/create_conference.dart';
 import 'auth.dart';
 import 'initial_page.dart';
-import 'joinmeeting.dart';
+import 'see_conferences.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:jitsi_meet/feature_flag/feature_flag_enum.dart';
 import 'package:jitsi_meet/jitsi_meet.dart';
@@ -110,7 +110,7 @@ class ConferenceMenu extends StatelessWidget {
         Container(
           padding: EdgeInsets.only(bottom: 20, left: 15, right: 15),
           width: 300.0,
-          height: 70.0,
+          height: 90.0,
           child: new RaisedButton(
             onPressed: () {
               Navigator.push(
@@ -130,20 +130,23 @@ class ConferenceMenu extends StatelessWidget {
             ),
           ),
         ),
+         SizedBox(
+          height: 20,
+        ),
         Container(
           padding: EdgeInsets.only(bottom: 20, left: 10, right: 10),
           width: 300.0,
-          height: 70.0,
+          height: 90.0,
           child: new RaisedButton(
             onPressed: () {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) =>
-                          Join(auth: auth, onSignOut: () => onSignOut)));
+                      builder: (context) => SeeConferences(
+                          auth: auth, onSignOut: () => onSignOut)));
             },
             child: Text(
-              "Join Meeting",
+              "See available conferences",
               style: TextStyle(color: Color.fromRGBO(88, 0, 0, 1)),
             ),
             color: Colors.white,
@@ -152,24 +155,6 @@ class ConferenceMenu extends StatelessWidget {
             ),
           ),
         ),
-        Container(
-          padding: EdgeInsets.only(bottom: 20, left: 10, right: 10),
-          width: 300.0,
-          height: 70.0,
-          child: new RaisedButton(
-            onPressed: () {
-              createChatRoom();
-            },
-            child: Text(
-              "Join Chat Room",
-              style: TextStyle(color: Color.fromRGBO(88, 0, 0, 1)),
-            ),
-            color: Colors.white,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(50.0),
-            ),
-          ),
-        )
       ]),
     );
   }
