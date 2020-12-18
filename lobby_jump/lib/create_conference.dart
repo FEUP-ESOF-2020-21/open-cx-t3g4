@@ -3,6 +3,7 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:lobby_jump/models/conference.dart';
 import 'auth.dart';
+import 'chatrooms.dart';
 import 'initial_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:jitsi_meet/feature_flag/feature_flag_enum.dart';
@@ -22,11 +23,11 @@ class CreateConference extends StatefulWidget {
 
 class _CreateConferenceState extends State<CreateConference> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  final serverText = TextEditingController();
-  final roomText = TextEditingController(text: "plugintestroom");
-  final subjectText = TextEditingController(text: "Subject");
-  final nameText = TextEditingController(text: "Name");
-  final emailText = TextEditingController(text: "fake@email.com");
+  var serverText = TextEditingController();
+  var roomText = TextEditingController();
+  var subjectText = TextEditingController();
+  var nameText = TextEditingController();
+  var emailText = TextEditingController(text: "fake@email.com");
   var isAudioOnly = true;
   var isAudioMuted = true;
   var isVideoMuted = true;
@@ -78,10 +79,9 @@ class _CreateConferenceState extends State<CreateConference> {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: new AppBar(
-          title: Transform(               
-            transform:  Matrix4.translationValues(-55.0, 0.0, 0.0),
-            child:const Text('Create Conference')
-          ),
+          title: Transform(
+              transform: Matrix4.translationValues(-55.0, 0.0, 0.0),
+              child: const Text('Create Conference')),
           leading: new Container(),
           backgroundColor: Color.fromRGBO(88, 0, 0, 1),
           elevation: 0,
@@ -107,7 +107,6 @@ class _CreateConferenceState extends State<CreateConference> {
                   TextFormField(
                     onChanged: (val) => conference.conferenceName = val,
                     validator: (val) => val == "" ? val : null,
-                    controller: roomText,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
                       labelText: "Conference Name",
@@ -119,7 +118,6 @@ class _CreateConferenceState extends State<CreateConference> {
                   TextFormField(
                     onChanged: (val) => conference.subject = val,
                     validator: (val) => val == "" ? val : null,
-                    controller: subjectText,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
                       labelText: "Subject",
@@ -131,7 +129,6 @@ class _CreateConferenceState extends State<CreateConference> {
                   TextFormField(
                     onChanged: (val) => conference.displayName = val,
                     validator: (val) => val == "" ? val : null,
-                    controller: nameText,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
                       labelText: "Display Name",
@@ -158,9 +155,8 @@ class _CreateConferenceState extends State<CreateConference> {
                   SizedBox(
                     height: 50,
                     child: Text(
-                      "Insert five topics related to the conference theme:",
-                      style: TextStyle(fontSize: 17)
-                    ),
+                        "Insert five topics related to the conference theme:",
+                        style: TextStyle(fontSize: 17)),
                   ),
                   TextFormField(
                     onChanged: (val) => topic1 = val,
@@ -301,10 +297,10 @@ class _CreateConferenceState extends State<CreateConference> {
 
       // Define meetings options here
       var options = JitsiMeetingOptions()
-        ..room = roomText.text
+        ..room = conference.conferenceName
         ..serverURL = serverUrl
-        ..subject = subjectText.text
-        ..userDisplayName = nameText.text
+        ..subject = conference.subject
+        ..userDisplayName = conference.displayName
         ..userEmail = emailText.text
         ..audioOnly = isAudioOnly
         ..audioMuted = isAudioMuted
@@ -325,6 +321,14 @@ class _CreateConferenceState extends State<CreateConference> {
         //roomNameConstraints: new Map(), // to disable all constraints
         //roomNameConstraints: customContraints, // to use your own constraint(s)
       );
+/*
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => Chatrooms(
+                  auth: widget.auth,
+                  onSignOut: () => widget.onSignOut,
+                  conferenceKey: conference.key)));*/
     } catch (error) {
       debugPrint("error: $error");
     }

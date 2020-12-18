@@ -164,22 +164,20 @@ class _ChatroomsState extends State<Chatrooms> {
       appBar: new AppBar(
         title: Transform(
             transform: Matrix4.translationValues(-55.0, 0.0, 0.0),
-            child: 
-
-         const Text('Chatrooms available')) ,
+            child: const Text('Chatrooms available')),
         leading: new Container(),
         backgroundColor: Color.fromRGBO(88, 0, 0, 1),
         elevation: 0,
         actions: <Widget>[
           IconButton(
-                icon: Icon(Icons.house_outlined),
-                color: Colors.grey[600],
-                iconSize: 40,
-                onPressed: () {
-                  Navigator.pop(context);
-                  Navigator.pop(context);
-                  Navigator.pop(context);
-                }),
+              icon: Icon(Icons.house_outlined),
+              color: Colors.grey[600],
+              iconSize: 40,
+              onPressed: () {
+                Navigator.pop(context);
+                Navigator.pop(context);
+                Navigator.pop(context);
+              }),
           /* new FlatButton(
               onPressed: _signOut,
               child: new Text('Logout',
