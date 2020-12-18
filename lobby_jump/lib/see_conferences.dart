@@ -60,7 +60,9 @@ class _SeeConferencesState extends State<SeeConferences> {
                 context,
                 MaterialPageRoute(
                     builder: (context) => Survey(
-                        auth: widget.auth, onSignOut: () => widget.onSignOut, conference:conferences.elementAt(index))))
+                        auth: widget.auth,
+                        onSignOut: () => widget.onSignOut,
+                        conference: conferences.elementAt(index))))
           },
           child: Card(
             clipBehavior: Clip.antiAlias,
@@ -72,9 +74,15 @@ class _SeeConferencesState extends State<SeeConferences> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Text(conferences.elementAt(index).conferenceName),
+                      Padding(
+                          padding: EdgeInsets.fromLTRB(0, 45.0, 0, 0),
+                          child: Text(
+                            conferences.elementAt(index).conferenceName,
+                            style: TextStyle(fontSize: 25),
+                          )),
                       SizedBox(height: 20.0),
-                      Text(conferences.elementAt(index).subject),
+                      Text(conferences.elementAt(index).subject,
+                          style: TextStyle(fontSize: 20)),
                     ],
                   ),
                 ),
@@ -89,6 +97,9 @@ class _SeeConferencesState extends State<SeeConferences> {
 
     return Scaffold(
       appBar: new AppBar(
+        title: Transform(
+            transform: Matrix4.translationValues(-55.0, 0.0, 0.0),
+            child: const Text('Conferences available')),
         leading: new Container(),
         backgroundColor: Color.fromRGBO(88, 0, 0, 1),
         elevation: 0,
@@ -100,12 +111,6 @@ class _SeeConferencesState extends State<SeeConferences> {
         ],
       ),
       backgroundColor: Color.fromRGBO(88, 0, 0, 1),
-      /* body: FirebaseAnimatedList(
-            query: conferenceRef,
-            itemBuilder: (BuildContext context, DataSnapshot snapshot,
-                Animation<double> animation, int index) {
-              return new ListTile(title: Text(conferences[index].displayName));
-            }) */
       body: GridView.count(
           crossAxisCount: 2,
           padding: EdgeInsets.all(16.0),

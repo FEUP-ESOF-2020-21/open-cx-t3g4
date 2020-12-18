@@ -78,7 +78,10 @@ class _CreateConferenceState extends State<CreateConference> {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: new AppBar(
-          title: const Text('Create Conference'),
+          title: Transform(               
+            transform:  Matrix4.translationValues(-55.0, 0.0, 0.0),
+            child:const Text('Create Conference')
+          ),
           leading: new Container(),
           backgroundColor: Color.fromRGBO(88, 0, 0, 1),
           elevation: 0,
@@ -156,7 +159,7 @@ class _CreateConferenceState extends State<CreateConference> {
                     height: 50,
                     child: Text(
                       "Insert five topics related to the conference theme:",
-                      style: TextStyle(fontSize: 17),
+                      style: TextStyle(fontSize: 17)
                     ),
                   ),
                   TextFormField(

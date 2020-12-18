@@ -57,34 +57,92 @@ class _SurveyState extends State<Survey> {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         home: Scaffold(
+            appBar: new AppBar(
+              title: Transform(
+                  transform: Matrix4.translationValues(-55.0, 0.0, 0.0),
+                  child: const Text('Conferences available')),
+              leading: new Container(),
+              backgroundColor: Color.fromRGBO(88, 0, 0, 1),
+              elevation: 0,
+              actions: <Widget>[
+                new FlatButton(
+                    onPressed: widget.onSignOut,
+                    child: new Text('Logout',
+                        style:
+                            new TextStyle(fontSize: 17.0, color: Colors.white)))
+              ],
+            ),
             body: Container(
-          child: Column(
-            children: <Widget>[
-              Padding(
-                padding: EdgeInsets.all(40),
-                child: Form(
-                  child: Column(
-                    children: _buildCheckboxes(),
+              child: Column(
+                children: <Widget>[
+                  SizedBox(
+                    height: 50.0,
                   ),
-                ),
+                  SizedBox(
+                      height: 60,
+                      child: Padding(
+                          padding: EdgeInsets.fromLTRB(15,0,0,0),
+                          child: Text(
+                              "Choose only three topics related to the conference theme:",
+                              style: TextStyle(fontSize: 20)))),
+                  Padding(
+                    padding: EdgeInsets.all(40),
+                    child: Form(
+                      child: Column(
+                        children: _buildCheckboxes(),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 40),
+                  Container(
+                      height: 70.0,
+                      width: 300.0,
+                      child: RaisedButton(
+                          onPressed: () => _joinMeeting(),
+                          child: Text('Join Meeting',
+                              style: new TextStyle(
+                                  fontSize: 17.0, color: Colors.white)),
+                          color: Color.fromRGBO(88, 0, 0, 1),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(50.0),
+                          )))
+                ],
               ),
-              RaisedButton(
-                  onPressed: () => _joinMeeting(),
-                  child: Text('Join Meeting',
-                      style:
-                          new TextStyle(fontSize: 17.0, color: Colors.white)),
-                  color: Color.fromRGBO(88, 0, 0, 1),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(50.0),
-                  ))
-            ],
-          ),
-        )));
+            )));
+  }
+
+  showAlertDialog(BuildContext context) {
+    // set up the button
+    Widget okButton = FlatButton(
+      child: Text("OK"),
+      onPressed: () {
+        Navigator.of(context).pop();
+      },
+    );
+
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: Text("Error:"),
+      content: Text("Choose only three topics"),
+      actions: [
+        okButton,
+      ],
+    );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
   }
 
   _joinMeeting() async {
     var keys = widget.conference.topics.keys;
     var values = widget.conference.topics.values;
+
+    var aux = 0;
 
     int val0 = values.elementAt(0);
     int val1 = values.elementAt(1);
@@ -97,69 +155,80 @@ class _SurveyState extends State<Survey> {
     int newval2;
     int newval3;
     int newval4;
-    if (topics[0] == true)
+    if (topics[0] == true) {
+      aux++;
       newval0 = val0 + 1;
-    else
+    } else
       newval0 = val0;
 
-    if (topics[1] == true)
+    if (topics[1] == true) {
+      aux++;
       newval1 = val1 + 1;
-    else
+    } else
       newval1 = val1;
 
-    if (topics[2] == true)
+    if (topics[2] == true) {
+      aux++;
       newval2 = val2 + 1;
-    else
+    } else
       newval2 = val2;
 
-    if (topics[3] == true)
+    if (topics[3] == true) {
+      aux++;
       newval3 = val3 + 1;
-    else
+    } else
       newval3 = val3;
 
-    if (topics[4] == true)
+    if (topics[4] == true) {
+      aux++;
       newval4 = val4 + 1;
-    else
+    } else
       newval4 = val4;
 
-    conferenceRef
-        .child(widget.conference.key)
-        .child('topics')
-        .update({keys.elementAt(0): newval0});
+    if (aux < 4) {
+      conferenceRef
+          .child(widget.conference.key)
+          .child('topics')
+          .update({keys.elementAt(0): newval0});
 
-    conferenceRef
-        .child(widget.conference.key)
-        .child('topics')
-        .update({keys.elementAt(1): newval1});
+      conferenceRef
+          .child(widget.conference.key)
+          .child('topics')
+          .update({keys.elementAt(1): newval1});
 
-    conferenceRef
-        .child(widget.conference.key)
-        .child('topics')
-        .update({keys.elementAt(2): newval2});
+      conferenceRef
+          .child(widget.conference.key)
+          .child('topics')
+          .update({keys.elementAt(2): newval2});
 
-    conferenceRef
-        .child(widget.conference.key)
-        .child('topics')
-        .update({keys.elementAt(3): newval3});
+      conferenceRef
+          .child(widget.conference.key)
+          .child('topics')
+          .update({keys.elementAt(3): newval3});
 
-    conferenceRef
-        .child(widget.conference.key)
-        .child('topics')
-        .update({keys.elementAt(4): newval4});
+      conferenceRef
+          .child(widget.conference.key)
+          .child('topics')
+          .update({keys.elementAt(4): newval4});
 
-    
-    try {
-      print(widget.conference.conferenceName);
-      var options = JitsiMeetingOptions()..room = widget.conference.conferenceName;
+      try {
+        print(widget.conference.conferenceName);
+        var options = JitsiMeetingOptions()
+          ..room = widget.conference.conferenceName;
 
-      await JitsiMeet.joinMeeting(options);
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => Chatrooms(
-                          auth: widget.auth, onSignOut: () => widget.onSignOut, conferenceKey: widget.conference.key)));
-    } catch (error) {
-      debugPrint("error: $error");
+        await JitsiMeet.joinMeeting(options);
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => Chatrooms(
+                    auth: widget.auth,
+                    onSignOut: () => widget.onSignOut,
+                    conferenceKey: widget.conference.key)));
+      } catch (error) {
+        debugPrint("error: $error");
+      }
+    } else {
+      showAlertDialog(this.context);
     }
   }
 }

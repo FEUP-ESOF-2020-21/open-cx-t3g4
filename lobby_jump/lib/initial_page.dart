@@ -15,6 +15,7 @@ class InitialPage extends StatelessWidget {
           padding: EdgeInsets.only(bottom: 110, top: 150, left: 10, right: 10),
         ),
         Container(
+            height: 90,
             padding: EdgeInsets.only(bottom: 20, left: 15, right: 15),
             child: new SignButton(
               key: new Key('login'),
@@ -22,7 +23,11 @@ class InitialPage extends StatelessWidget {
               colorButton: 1,
               function: 1,
             )),
+        SizedBox(
+          height: 20,
+        ),
         Container(
+          height: 70,
           padding: EdgeInsets.only(left: 10, right: 10),
           child: new SignButton(
             key: new Key('signup'),

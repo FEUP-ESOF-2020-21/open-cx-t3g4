@@ -143,7 +143,11 @@ class _ChatroomsState extends State<Chatrooms> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Text(values.keys.elementAt(indexes.elementAt(index))),
+                      Padding(
+                          padding: EdgeInsets.fromLTRB(0, 65.0, 0, 0),
+                          child: Text(
+                              values.keys.elementAt(indexes.elementAt(index)),
+                              style: TextStyle(fontSize: 25))),
                     ],
                   ),
                 ),
@@ -158,23 +162,31 @@ class _ChatroomsState extends State<Chatrooms> {
 
     return Scaffold(
       appBar: new AppBar(
+        title: Transform(
+            transform: Matrix4.translationValues(-55.0, 0.0, 0.0),
+            child: 
+
+         const Text('Chatrooms available')) ,
         leading: new Container(),
         backgroundColor: Color.fromRGBO(88, 0, 0, 1),
         elevation: 0,
         actions: <Widget>[
-          new FlatButton(
+          IconButton(
+                icon: Icon(Icons.house_outlined),
+                color: Colors.grey[600],
+                iconSize: 40,
+                onPressed: () {
+                  Navigator.pop(context);
+                  Navigator.pop(context);
+                  Navigator.pop(context);
+                }),
+          /* new FlatButton(
               onPressed: _signOut,
               child: new Text('Logout',
-                  style: new TextStyle(fontSize: 17.0, color: Colors.white)))
+                  style: new TextStyle(fontSize: 17.0, color: Colors.white))) */
         ],
       ),
       backgroundColor: Color.fromRGBO(88, 0, 0, 1),
-      /* body: FirebaseAnimatedList(
-            query: conferenceRef,
-            itemBuilder: (BuildContext context, DataSnapshot snapshot,
-                Animation<double> animation, int index) {
-              return new ListTile(title: Text(conferences[index].displayName));
-            }) */
       body: GridView.count(
           crossAxisCount: 2,
           padding: EdgeInsets.all(16.0),
