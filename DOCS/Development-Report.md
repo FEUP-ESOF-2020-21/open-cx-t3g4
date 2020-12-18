@@ -220,7 +220,7 @@ The User Stories, its interface mockups, acceptance tests and Value and Effort c
 
 To better understand the context of the software system, it is very useful to have a simple UML class diagram with all the key concepts and relationships involved of the problem domain addressed by your module.
 
-![Alt Text](https://github.com/FEUP-ESOF-2020-21/open-cx-t3g4/blob/master/imagens/PDomain.png)
+![Alt Text](https://github.com/FEUP-ESOF-2020-21/open-cx-t3g4/blob/master/imagens/PblDomain.png)
 
 Our App concepts are easy to understand. 
 * The class **Participant** represents the user, that may or may not be a Speaker. A Participant has a name and a password as attributes and he can watch as many conferences as he desires.
