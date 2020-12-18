@@ -53,7 +53,7 @@ Start by contextualizing your module, describing the main concepts, terms, roles
 
 ### Use case diagram
 
-![Alt Text](https://media.discordapp.net/attachments/757916505068404796/779361541602279424/Diagrama_em_branco.png?width=856&height=935)
+![Alt Text](https://github.com/FEUP-ESOF-2020-21/open-cx-t3g4/blob/master/imagens/Use%20Case%20Diagram.png)
 
 
 
