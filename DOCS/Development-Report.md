@@ -105,7 +105,8 @@ Start by contextualizing your module, describing the main concepts, terms, roles
 
 * **Normal Flow**: 
    * The Participant logs in;
-   * The Participant selects the join meeting button;
+   * The Participant selects the See Available Conferences button;
+   * The Participant joins in a Conference;
    * The Participant chooses 3 of the 5 topics os interest provided by the Speaker;
    
    
@@ -117,16 +118,13 @@ Start by contextualizing your module, describing the main concepts, terms, roles
 * **Preconditions and Postconditions**: In order to participate in voice chats, the participant must first login into the application, join a meeting, select 3 of the 5 topics he is interested in and wait till the end of the conference.
 
 * **Normal Flow**: 
+
   * The Participant logs in;
-  * The Participant selects the join chat room button;
-  * The Participant selects the Chat Room he is interested in.
-  * **OR**
-  * The Participant logs in;
-  * The Participant selects the join meeting button;
+  * The Participant selects the See Available Conferences button;
+  * The Participant joins in a Conference;
   * The Participant chooses 3 of the 5 topics os interest provided by the Speaker;
   * The Participant wait for the conference to end;
-  * The Participant selects the join char room button in the main menu;
-  * The Participant selects the chat room with the topics he voted in the beginning of the conference (if it is available).
+  * The Participant selects the chat room with the topic he is interested in.
   
   
 
@@ -138,8 +136,9 @@ Start by contextualizing your module, describing the main concepts, terms, roles
 
 * **Normal Flow**: 
    * The Participant logs in;
-   * The Participant selects the Join Meeting button;
-   * The Participant writes the Conference ID;
+   * The Participant selects the See Available Conferences button;
+   * The Participant joins in a Conference;
+   * The Participant selects the chat balloon icon;
    * The Participant sends a question in the chat.
  
 * **Alternative Flows and Exceptions**:
