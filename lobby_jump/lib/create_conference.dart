@@ -134,7 +134,7 @@ class _CreateConferenceState extends State<CreateConference> {
                       labelText: "Display Name",
                     ),
                   ),
-                  CheckboxListTile(
+                  /*  CheckboxListTile(
                     title: Text("Audio Only"),
                     value: isAudioOnly,
                     onChanged: _onAudioOnlyChanged,
@@ -148,6 +148,16 @@ class _CreateConferenceState extends State<CreateConference> {
                     title: Text("Video Muted"),
                     value: isVideoMuted,
                     onChanged: _onVideoMutedChanged,
+                  ), */
+                  SizedBox(
+                    height: 10.0,
+                  ),
+                  SizedBox(
+                    height: 50,
+                    child: Text(
+                      "Insert five topics related to the conference theme:",
+                      style: TextStyle(fontSize: 17),
+                    ),
                   ),
                   TextFormField(
                     onChanged: (val) => topic1 = val,
@@ -221,9 +231,6 @@ class _CreateConferenceState extends State<CreateConference> {
                         borderRadius: BorderRadius.circular(50.0),
                       ),
                     ),
-                  ),
-                  SizedBox(
-                    height: 48.0,
                   ),
                 ],
               ),

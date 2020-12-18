@@ -111,7 +111,7 @@ class ConferenceMenu extends StatelessWidget {
         Container(
           padding: EdgeInsets.only(bottom: 20, left: 15, right: 15),
           width: 300.0,
-          height: 70.0,
+          height: 90.0,
           child: new RaisedButton(
             onPressed: () {
               Navigator.push(
@@ -131,10 +131,13 @@ class ConferenceMenu extends StatelessWidget {
             ),
           ),
         ),
+         SizedBox(
+          height: 20,
+        ),
         Container(
           padding: EdgeInsets.only(bottom: 20, left: 10, right: 10),
           width: 300.0,
-          height: 70.0,
+          height: 90.0,
           child: new RaisedButton(
             onPressed: () {
               Navigator.push(
