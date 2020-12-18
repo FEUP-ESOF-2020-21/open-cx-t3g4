@@ -24,12 +24,17 @@ class _CreateConferenceState extends State<CreateConference> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final serverText = TextEditingController();
   final roomText = TextEditingController(text: "plugintestroom");
-  final subjectText = TextEditingController(text: "My Plugin Test Meeting");
-  final nameText = TextEditingController(text: "Plugin Test User");
+  final subjectText = TextEditingController(text: "Subject");
+  final nameText = TextEditingController(text: "Name");
   final emailText = TextEditingController(text: "fake@email.com");
   var isAudioOnly = true;
   var isAudioMuted = true;
   var isVideoMuted = true;
+  var topic1 = "";
+  var topic2 = "";
+  var topic3 = "";
+  var topic4 = "";
+  var topic5 = "";
   Conference conference;
 
   DatabaseReference conferenceRef;
@@ -129,29 +134,72 @@ class _CreateConferenceState extends State<CreateConference> {
                       labelText: "Display Name",
                     ),
                   ),
-                  SizedBox(
-                    height: 16.0,
-                  ),
                   CheckboxListTile(
                     title: Text("Audio Only"),
                     value: isAudioOnly,
                     onChanged: _onAudioOnlyChanged,
-                  ),
-                  SizedBox(
-                    height: 16.0,
                   ),
                   CheckboxListTile(
                     title: Text("Audio Muted"),
                     value: isAudioMuted,
                     onChanged: _onAudioMutedChanged,
                   ),
-                  SizedBox(
-                    height: 16.0,
-                  ),
                   CheckboxListTile(
                     title: Text("Video Muted"),
                     value: isVideoMuted,
                     onChanged: _onVideoMutedChanged,
+                  ),
+                  TextFormField(
+                    onChanged: (val) => topic1 = val,
+                    validator: (val) => val == "" ? val : null,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: "First Topic",
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10.0,
+                  ),
+                  TextFormField(
+                    onChanged: (val) => topic2 = val,
+                    validator: (val) => val == "" ? val : null,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: "Second Topic",
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10.0,
+                  ),
+                  TextFormField(
+                    onChanged: (val) => topic3 = val,
+                    validator: (val) => val == "" ? val : null,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: "Third Topic",
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10.0,
+                  ),
+                  TextFormField(
+                    onChanged: (val) => topic4 = val,
+                    validator: (val) => val == "" ? val : null,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: "Fourth Topic",
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10.0,
+                  ),
+                  TextFormField(
+                    onChanged: (val) => topic5 = val,
+                    validator: (val) => val == "" ? val : null,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: "Fifth Topic",
+                    ),
                   ),
                   Divider(
                     height: 48.0,
@@ -212,11 +260,11 @@ class _CreateConferenceState extends State<CreateConference> {
     if (form.validate()) {
       form.save();
       form.reset();
-      conference.topics.addAll({"Computers":0});
-      conference.topics.addAll({"Science":0});
-      conference.topics.addAll({"Robots":0});
-      conference.topics.addAll({"Virtual Reality":0});
-      conference.topics.addAll({"Phones":0});
+      conference.topics.addAll({topic1: 0});
+      conference.topics.addAll({topic2: 0});
+      conference.topics.addAll({topic3: 0});
+      conference.topics.addAll({topic4: 0});
+      conference.topics.addAll({topic5: 0});
 
       conferenceRef.push().set(conference.toJson());
     }

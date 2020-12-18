@@ -51,8 +51,7 @@ class _ChatroomsState extends State<Chatrooms> {
 
     topicsref.once().then((DataSnapshot snapshot) async {
       values = await snapshot.value;
-      topictext =values.keys;
-
+      topictext = values.keys;
     });
   }
 
@@ -77,12 +76,63 @@ class _ChatroomsState extends State<Chatrooms> {
       await JitsiMeet.joinMeeting(options);
     }
 
+    getTopics() {
+      List<int> indexes = [];
+      var max1 = values.values.elementAt(0);
+      var aux1 = 0;
+      for (int index = 1; index < 5; index++) {
+        if (values.values.elementAt(index) > max1) {
+          max1 = values.values.elementAt(index);
+          aux1 = index;
+        }
+      }
+      indexes.insert(0, aux1);
+
+      var max2;
+      for (int index = 0; index < 5; index++) {
+        if (index != aux1) {
+          max2 = values.values.elementAt(index);
+          break;
+        }
+      }
+      var aux2 = 0;
+      for (int index = 0; index < 5; index++) {
+        if (index != aux1) {
+          if (values.values.elementAt(index) > max2) {
+            max2 = values.values.elementAt(index);
+            aux2 = index;
+          }
+        }
+      }
+      indexes.insert(1, aux2);
+
+      var max3;
+      for (int index = 0; index < 5; index++) {
+        if (index != aux2 && index != aux1) {
+          max3 = values.values.elementAt(index);
+          break;
+        }
+      }
+      var aux3 = 0;
+      for (int index = 0; index < 5; index++) {
+        if (index != aux2 && index != aux1) {
+          if (values.values.elementAt(index) > max3) {
+            max3 = values.values.elementAt(index);
+            aux3 = index;
+          }
+        }
+      }
+      indexes.insert(2, aux3);
+      return indexes;
+    }
+
     List<GestureDetector> _buildGridCards() {
-      int count = 5; //rever
+      int count = 3; //rever
+      var indexes = getTopics();
       List<GestureDetector> cards = List.generate(
         count,
         (int index) => GestureDetector(
-          onTap: () => {_joinChatRoom(index)},
+          onTap: () => {_joinChatRoom(indexes.elementAt(index))},
           child: Card(
             clipBehavior: Clip.antiAlias,
             child: Column(
@@ -93,7 +143,7 @@ class _ChatroomsState extends State<Chatrooms> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Text(values.keys.elementAt(index)),
+                      Text(values.keys.elementAt(indexes.elementAt(index))),
                     ],
                   ),
                 ),
