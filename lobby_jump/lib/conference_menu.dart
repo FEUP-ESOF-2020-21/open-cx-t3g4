@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:lobby_jump/create_conference.dart';
 import 'auth.dart';
 import 'initial_page.dart';
-import 'joinmeeting.dart';
 import 'see_conferences.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:jitsi_meet/feature_flag/feature_flag_enum.dart';

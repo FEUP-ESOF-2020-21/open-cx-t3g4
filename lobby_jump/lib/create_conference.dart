@@ -3,7 +3,6 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:lobby_jump/models/conference.dart';
 import 'auth.dart';
-import 'chatrooms.dart';
 import 'initial_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:jitsi_meet/feature_flag/feature_flag_enum.dart';

@@ -81,7 +81,7 @@ class _SurveyState extends State<Survey> {
                   SizedBox(
                       height: 60,
                       child: Padding(
-                          padding: EdgeInsets.fromLTRB(15,0,0,0),
+                          padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
                           child: Text(
                               "Choose only three topics related to the conference theme:",
                               style: TextStyle(fontSize: 20)))),

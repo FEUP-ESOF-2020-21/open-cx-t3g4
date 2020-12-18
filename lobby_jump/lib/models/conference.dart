@@ -10,7 +10,7 @@ class Conference {
   bool audioOn;
   bool videoOn;
 
-  Map<dynamic, dynamic> topics;//TODO ajeitar tipos
+  Map<dynamic, dynamic> topics;
 
   Conference(this.conferenceName, this.subject, this.displayName,
       this.audioOnly, this.audioOn, this.videoOn, this.topics);
