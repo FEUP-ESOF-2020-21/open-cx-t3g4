@@ -274,15 +274,13 @@ To document the architecture requires describing the decomposition of the system
 In this section you should start by briefly describing the overall components of the project and their interrelations. You should also describe how you solved typical problems you may have encountered, pointing to well-known architectural and design patterns, if applicable.
 
 ### Logical architecture
-![Alt Text](https://github.com/FEUP-ESOF-2020-21/open-cx-t3g4/blob/master/imagens/LogicalArch.png)
+![Alt Text](https://github.com/FEUP-ESOF-2020-21/open-cx-t3g4/blob/master/imagens/LogicslArchit.png)
 
-The high-level logical structure of our code has a Model-View-Controller software design pattern.
+The high-level logical structure of our code can be represented in two main packages: the **Models** and the **Views and Controllers**.
 
-The Model package is where the app's data information can be found, containing data related to the participants, conferences, chat rooms and their attributes. This data will be displayed in the View.
+The **Models** package is where the app's data information can be found, containing data related to the conferences, participants, chat rooms and their attributes. This data will be displayed in the **Views and Controllers** package.
 
-The View package represents the concrete display of the app frames, widgets and data to the user that can be seen in the screen of the smartphone device.
-
-The Controller generates functionalities according to the actions executed by the user, sending and updating the data to display in the View and updating the data in the Model.
+The **Views and Controllers** package represents the concrete display of the app frames, widgets and data to the user that can be seen in the screen of the smartphone device, and also generates functionalities according to the actions executed by the user, updating the data in the **Models**.
 
 
 ### Physical architecture
