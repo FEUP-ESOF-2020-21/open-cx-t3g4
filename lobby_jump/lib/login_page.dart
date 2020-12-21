@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lobby_jump/conference_menu.dart';
 import 'auth.dart';
+import 'package:email_validator/email_validator.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class LoginPage extends StatefulWidget {
   LoginPage({Key key}) : super(key: key);
@@ -44,9 +46,8 @@ class _LoginPageState extends State<LoginPage> {
           if (value.isEmpty) {
             return 'Email can\'t be empty.';
           }
-          if (value.contains(
-              r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$')) {
-            return 'Invalid Email';
+          if (!EmailValidator.validate(value)) {
+            return 'Please enter a valid email';
           }
           return null;
         },
@@ -101,12 +102,40 @@ class _LoginPageState extends State<LoginPage> {
     return false;
   }
 
+  showAlertDialog(BuildContext context) {
+    // set up the button
+    Widget okButton = FlatButton(
+      child: Text("OK"),
+      onPressed: () {
+        Navigator.of(context).pop();
+      },
+    );
+
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: Text("Error:"),
+      content: Text("Invalid Login"),
+      actions: [
+        okButton,
+      ],
+    );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+  }
+
   void validateAndSubmit() async {
     String userId = '';
     try {
       if (validateAndSave()) {
         userId = await auth.signIn(_email, _password);
-        if (userId.length > 0 && userId != null) {
+        if (userId.length > 0 && userId != null  && userId != 'error') {
+          print(userId);
           _updateAuthStatus(AuthStatus.signedIn);
           Navigator.pushReplacement(
             context,
@@ -116,6 +145,8 @@ class _LoginPageState extends State<LoginPage> {
                   onSignOut: () => _updateAuthStatus(AuthStatus.notSignedIn)),
             ),
           );
+        } else {
+            showAlertDialog(this.context);
         }
       }
     } catch (e) {
