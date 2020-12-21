@@ -309,11 +309,7 @@ A few aspects of the code and the regular product increments can be found [here]
 
 There are several ways of documenting testing activities, and quality assurance in general, being the most common: a strategy, a plan, test case specifications, and test checklists.
 
-In this section it is only expected to include the following:
-* test plan describing the list of features to be tested and the testing methods and tools;
-* test case specifications to verify the functionalities, using unit tests and acceptance tests.
-
-A good practice is to simplify this, avoiding repetitions, and automating the testing actions as much as possible.
+The acceptance tests can be found in each user story in [here](https://github.com/FEUP-ESOF-2020-21/open-cx-t3g4/projects/1)
 
 ---
 ## Configuration and change management
