@@ -1,7 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:lobby_jump/create_conference.dart';
+import 'package:lobby_jump/views and controllers/create_conference.dart';
 import 'auth.dart';
 import 'initial_page.dart';
 import 'see_conferences.dart';

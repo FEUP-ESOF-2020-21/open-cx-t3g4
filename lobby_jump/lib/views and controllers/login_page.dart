@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lobby_jump/conference_menu.dart';
+import 'package:lobby_jump/views and controllers/conference_menu.dart';
 import 'auth.dart';
 import 'package:email_validator/email_validator.dart';
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:lobby_jump/login_page.dart';
-import 'package:lobby_jump/register_page.dart';
+import 'package:lobby_jump/views and controllers/login_page.dart';
+import 'package:lobby_jump/views and controllers/register_page.dart';
 import 'package:flutter/cupertino.dart';
 
 class SignButton extends StatelessWidget {

@@ -2,7 +2,7 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 
 import 'package:jitsi_meet/jitsi_meet.dart';
-import 'package:lobby_jump/chatrooms.dart';
+import 'package:lobby_jump/views and controllers/chatrooms.dart';
 import 'package:lobby_jump/models/conference.dart';
 
 import 'auth.dart';
