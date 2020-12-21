@@ -81,9 +81,32 @@ Start by contextualizing your module, describing the main concepts, terms, roles
    * The Participant writes an invalid email trying to register;
    * The Participant is not registered;
    
+
+**Log Out:**
+
+* **Actor**: Participant
+* **Description**: This use case exists so that the participant can log out.
+* **Preconditions and Postconditions**: In order to logout, the participant must first login into the application.
+
+* **Normal Flow**: 
+   * The Participant writes the correct email and password;
+   * The Participant logs in;
+   * The Participant selects the "Logout" text in the right corner of the top of the main menu page;
    
-   
-**Create a Conference Room to Talk about a Topic:**
+
+**See Available Conferences**
+
+* **Actor**: Participant
+* **Description**: This use case exists so that the participant can see the available conferences.
+* **Preconditions and Postconditions**: In order to see the available conferences, the Participant must first login into the application.
+
+* **Normal Flow**: 
+   * The Participant logs in;
+   * The Participant selects the See Available Conferences button in the main menu page;
+ 
+ 
+ 
+ **Create a Conference Room to Talk about a Topic:**
 
 * **Actor**: Speaker
 * **Description**: This use case exists so that the speaker can create a conference room.
@@ -91,13 +114,27 @@ Start by contextualizing your module, describing the main concepts, terms, roles
 
 * **Normal Flow**: 
    * The Speaker logs in;
-   * The Speaker selects the Create Meeting button;
-   * The Speaker chooses the name of the Conference and selects 5 topics he thinks the participants are interested in.
+   * The Speaker selects the Create Meeting button in the main menu page;
+   * The Speaker writes the name and subject of the Conference and selects 5 topics he thinks the participants are interested in.
+   
+   
+
+**Participate in Conferences**
+
+* **Actor**: Participant
+* **Description**: This use case exists so that the participant can participate in the available conferences.
+* **Preconditions and Postconditions**: In order to see the available conferences, the Participant must first login into the application.
+
+* **Normal Flow**: 
+   * The Participant logs in;
+   * The Participant selects the See Available Conferences button in the main menu page;
+   * The Participant chooses a conference that is in the available conferences list;
+   * The Participant chooses 3 of the 5 topics os interest provided by the Speake;
+   * The Participant selects the "Join Meeting" button.
    
    
    
-   
- **Choose Topics of Interest:**
+**Choose Topics of Interest:**
 
 * **Actor**: Participant
 * **Description**: This use case exists so that the user can choose topics of interest.
@@ -115,7 +152,7 @@ Start by contextualizing your module, describing the main concepts, terms, roles
 
 * **Actor**: Participant
 * **Description**: This use case exists so that the participant can participate in voice chats of the topics of interest.
-* **Preconditions and Postconditions**: In order to participate in voice chats, the participant must first login into the application, join a meeting, select 3 of the 5 topics he is interested in and wait till the end of the conference.
+* **Preconditions and Postconditions**: In order to participate in voice chats, the participant must first login into the application, join a meeting, select 3 of the 5 topics he is interested in and wait till the end of the conference or exit it.
 
 * **Normal Flow**: 
 
@@ -123,7 +160,8 @@ Start by contextualizing your module, describing the main concepts, terms, roles
   * The Participant selects the See Available Conferences button;
   * The Participant joins in a Conference;
   * The Participant chooses 3 of the 5 topics os interest provided by the Speaker;
-  * The Participant wait for the conference to end;
+  * The Participant selects the "Join Meeting" button;
+  * The Participant wait for the conference to end or exits the conference;
   * The Participant selects the chat room with the topic he is interested in.
   
   
@@ -153,24 +191,28 @@ Start by contextualizing your module, describing the main concepts, terms, roles
    * The Speaker logs in;
    * The Speaker selects the Create Meeting button;
    * The Speaker chooses the name of the Conference and selects 5 topics he thinks the participants are interested in.
+   * The Speaker selects the chat balloon icon;
    * The Speaker can see the questions in the chat and answer them.
    
-   
- 
- **Vote in the Most Interesting Questions:**
+
+**Send Direct Messages to Other Users:**
 
 * **Actor**: Participant
-* **Description**: This use case exists so that the participant can vote in the most interesting questions asked during the conference so they are answered with priority.
-* **Preconditions and Postconditions**: In order to vote in a question, the Participant must first login into the application and select the conference that is occuring in the schedule. Then, a list with questions will be displayed in the conference page.
+* **Description**: This use case exists so that the participant can send direct messages to other users in the voie chats.
+* **Preconditions and Postconditions**: In order to send direct messages to other users in the voice chats, the participant must first login into the application, join a meeting, select 3 of the 5 topics he is interested in, wait till the end of the conference or exit it, and join in one of the available chat rooms that are displayed
 
 * **Normal Flow**: 
-   * The Participant logs in;
-   * The Participant selects the time schedule icon;
-   * The Participant selects the Conference that is occuring;
-   * The Participant selects the underlined word "Vote" that is next to the desired question.
+  * The Participant logs in;
+  * The Participant selects the See Available Conferences button;
+  * The Participant joins in a Conference;
+  * The Participant chooses 3 of the 5 topics os interest provided by the Speaker;
+  * The Participant selects the "Join Meeting" button;
+  * The Participant wait for the conference to end or exits the conference;
+  * The Participant selects the chat room with the topic he is interested in.
+  * The Participant selects the chat balloon icon;
+  * The Participant send direct messages in the chat to other users.
+   
 
-
- 
  
  
 ### User stories
