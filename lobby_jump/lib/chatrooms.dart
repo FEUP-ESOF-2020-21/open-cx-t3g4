@@ -83,13 +83,15 @@ class _ChatroomsState extends State<Chatrooms> {
       indexes.insert(0, aux1);
 
       var max2;
+      var aux2;
       for (int index = 0; index < 5; index++) {
         if (index != aux1) {
           max2 = values.values.elementAt(index);
+          aux2 = index;
           break;
         }
       }
-      var aux2 = 0;
+
       for (int index = 0; index < 5; index++) {
         if (index != aux1) {
           if (values.values.elementAt(index) > max2) {
@@ -101,13 +103,14 @@ class _ChatroomsState extends State<Chatrooms> {
       indexes.insert(1, aux2);
 
       var max3;
+      var aux3;
       for (int index = 0; index < 5; index++) {
         if (index != aux2 && index != aux1) {
           max3 = values.values.elementAt(index);
+          aux3 = index;
           break;
         }
       }
-      var aux3 = 0;
       for (int index = 0; index < 5; index++) {
         if (index != aux2 && index != aux1) {
           if (values.values.elementAt(index) > max3) {
