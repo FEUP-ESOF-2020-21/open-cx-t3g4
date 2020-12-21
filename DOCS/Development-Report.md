@@ -256,7 +256,7 @@ To better understand the context of the software system, it is very useful to ha
 ![Alt Text](https://github.com/FEUP-ESOF-2020-21/open-cx-t3g4/blob/master/imagens/PblDomain.png)
 
 Our App concepts are easy to understand. 
-* The class **Participant** represents the user, that may or may not be a Speaker. A Participant has a name and a password as attributes and he can watch as many conferences as he desires.
+* The class **Participant** represents the user, that may or may not be a Speaker. A Participant has a name and a password as attributes and he can watch as many conferences as he desires (one at a time).
 * The **Conference** can be watched by an unlimited number of Participants and it has an associated ID. During the Conference, a Participant can ask all the **Questions** he wants to ask. 
 * The Conference is previously created by the **Speaker**, who can create all the conferences he wants and select 5 **InterestTopics**, that he believes the Participants are interest in, before their beginning.
 * The Participants can choose up to 3 Interest Topics provided by the Speaker when they join the Conference and the **Chat Rooms** with the most voted topics as themes will be created. The Participants can also join in an unlimited number os Chat Rooms (one at a time).
