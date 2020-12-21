@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:lobby_jump/login_page.dart';
+import 'package:lobby_jump/views and controllers/login_page.dart';
 import 'auth.dart';
+import 'package:email_validator/email_validator.dart';
 
 class RegisterPage extends StatefulWidget {
   RegisterPage({Key key}) : super(key: key);
@@ -43,9 +44,8 @@ class _RegisterPageState extends State<RegisterPage> {
           if (value.isEmpty) {
             return 'Email can\'t be empty.';
           }
-          if (value.contains(
-              r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$')) {
-            return 'Invalid Email';
+          if (!EmailValidator.validate(value)) {
+            return 'Please enter a valid email';
           }
           return null;
         },
@@ -77,8 +77,15 @@ class _RegisterPageState extends State<RegisterPage> {
             ),
             obscureText: _showPassword,
             autocorrect: false,
-            validator: (val) =>
-                val.isEmpty ? 'Password can\'t be empty.' : null,
+            validator: (value) {
+              if (value.isEmpty) {
+                return 'Password can\'t be empty.';
+              }
+              if (value.length < 6)
+                return 'Password should be at least 6 characters';
+
+              return null;
+            },
             onChanged: (val) => _password = val,
           )),
         ],

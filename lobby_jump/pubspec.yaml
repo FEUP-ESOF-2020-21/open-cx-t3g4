@@ -31,6 +31,7 @@ dependencies:
   fluttertoast: ^7.1.1
   email_validator: '^1.0.5'
   jitsi_meet: ^1.0.0
+
     
 
 

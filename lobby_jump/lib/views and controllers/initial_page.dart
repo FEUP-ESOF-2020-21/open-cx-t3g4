@@ -1,7 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:lobby_jump/sign_button.dart';
+import 'package:lobby_jump/views and controllers/sign_button.dart';
 import 'sign_button.dart';
 
 class InitialPage extends StatelessWidget {

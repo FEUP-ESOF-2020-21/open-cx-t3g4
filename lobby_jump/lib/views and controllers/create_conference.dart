@@ -8,8 +8,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:jitsi_meet/feature_flag/feature_flag_enum.dart';
 import 'package:jitsi_meet/jitsi_meet.dart';
 import 'package:jitsi_meet/jitsi_meeting_listener.dart';
-import 'package:jitsi_meet/room_name_constraint.dart';
-import 'package:jitsi_meet/room_name_constraint_type.dart';
 
 class CreateConference extends StatefulWidget {
   @override
@@ -42,11 +40,6 @@ class _CreateConferenceState extends State<CreateConference> {
   @override
   void initState() {
     super.initState();
-    JitsiMeet.addListener(JitsiMeetingListener(
-        onConferenceWillJoin: _onConferenceWillJoin,
-        onConferenceJoined: _onConferenceJoined,
-        onConferenceTerminated: _onConferenceTerminated,
-        onError: _onError));
     conference = Conference("", "", "", false, false, true, {});
 
     final FirebaseDatabase database = FirebaseDatabase.instance;
@@ -133,21 +126,6 @@ class _CreateConferenceState extends State<CreateConference> {
                       labelText: "Display Name",
                     ),
                   ),
-                  /*  CheckboxListTile(
-                    title: Text("Audio Only"),
-                    value: isAudioOnly,
-                    onChanged: _onAudioOnlyChanged,
-                  ),
-                  CheckboxListTile(
-                    title: Text("Audio Muted"),
-                    value: isAudioMuted,
-                    onChanged: _onAudioMutedChanged,
-                  ),
-                  CheckboxListTile(
-                    title: Text("Video Muted"),
-                    value: isVideoMuted,
-                    onChanged: _onVideoMutedChanged,
-                  ), */
                   SizedBox(
                     height: 10.0,
                   ),
@@ -221,7 +199,7 @@ class _CreateConferenceState extends State<CreateConference> {
                         _joinMeeting();
                       },
                       child: Text(
-                        "Create Meeting",
+                        "Create Conference",
                         style: TextStyle(color: Colors.white),
                       ),
                       color: Color.fromRGBO(88, 0, 0, 1),
@@ -239,25 +217,43 @@ class _CreateConferenceState extends State<CreateConference> {
     );
   }
 
-  _onAudioOnlyChanged(bool value) {
-    setState(() {
-      isAudioOnly = value;
-      conference.audioOnly = value;
-    });
-  }
+  showAlertDialog(BuildContext context, int message) {
+    // set up the button
+    Widget okButton = FlatButton(
+      child: Text("OK"),
+      onPressed: () {
+        Navigator.of(context).pop();
+      },
+    );
 
-  _onAudioMutedChanged(bool value) {
-    setState(() {
-      isAudioMuted = value;
-      conference.audioOn = value;
-    });
-  }
+    String text;
 
-  _onVideoMutedChanged(bool value) {
-    setState(() {
-      isVideoMuted = value;
-      conference.videoOn = value;
-    });
+    if (message == 0) {
+      text = "Topics can not be empty";
+    } else if (message == 1) {
+      text = "Conference name can not be empty";
+    } else if (message == 2) {
+      text = "Conference name can not have empty spaces";
+    } else if (message == 3) {
+      text = "Topics can not have empty spaces";
+    }
+
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: Text("Error:"),
+      content: Text(text),
+      actions: [
+        okButton,
+      ],
+    );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
   }
 
   _joinMeeting() async {
@@ -265,99 +261,93 @@ class _CreateConferenceState extends State<CreateConference> {
     if (form.validate()) {
       form.save();
       form.reset();
-      conference.topics.addAll({topic1: 0});
-      conference.topics.addAll({topic2: 0});
-      conference.topics.addAll({topic3: 0});
-      conference.topics.addAll({topic4: 0});
-      conference.topics.addAll({topic5: 0});
-
-      conferenceRef.push().set(conference.toJson());
     }
 
-    String serverUrl =
-        serverText.text?.trim()?.isEmpty ?? "" ? null : serverText.text;
+    if (topic1.isEmpty ||
+        topic2.isEmpty ||
+        topic3.isEmpty ||
+        topic4.isEmpty ||
+        topic5.isEmpty) {
+      showAlertDialog(this.context, 0);
+    } else {
+      if (conference.conferenceName.isEmpty) {
+        showAlertDialog(this.context, 1);
+      } else {
+        if (conference.conferenceName.contains(" ")) {
+          showAlertDialog(this.context, 2);
+        } else {
+          if (topic1.contains(" ") ||
+              topic2.contains(" ") ||
+              topic3.contains(" ") ||
+              topic4.contains(" ") ||
+              topic5.contains(" ")) {
+            showAlertDialog(this.context, 3);
+          } else {
+            conference.topics.addAll({topic1: 0});
+            conference.topics.addAll({topic2: 0});
+            conference.topics.addAll({topic3: 0});
+            conference.topics.addAll({topic4: 0});
+            conference.topics.addAll({topic5: 0});
 
-    try {
-      // Enable or disable any feature flag here
-      // If feature flag are not provided, default values will be used
-      // Full list of feature flags (and defaults) available in the README
-      Map<FeatureFlagEnum, bool> featureFlags = {
-        FeatureFlagEnum.WELCOME_PAGE_ENABLED: false,
-      };
+            conferenceRef.push().set(conference.toJson());
 
-      // Here is an example, disabling features for each platform
-      if (Platform.isAndroid) {
-        // Disable ConnectionService usage on Android to avoid issues (see README)
-        featureFlags[FeatureFlagEnum.CALL_INTEGRATION_ENABLED] = false;
-      } else if (Platform.isIOS) {
-        // Disable PIP on iOS as it looks weird
-        featureFlags[FeatureFlagEnum.PIP_ENABLED] = false;
+            String serverUrl =
+                serverText.text?.trim()?.isEmpty ?? "" ? null : serverText.text;
+
+            try {
+              // Enable or disable any feature flag here
+              // If feature flag are not provided, default values will be used
+              // Full list of feature flags (and defaults) available in the README
+              Map<FeatureFlagEnum, bool> featureFlags = {
+                FeatureFlagEnum.WELCOME_PAGE_ENABLED: false,
+              };
+
+              // Here is an example, disabling features for each platform
+              if (Platform.isAndroid) {
+                // Disable ConnectionService usage on Android to avoid issues (see README)
+                featureFlags[FeatureFlagEnum.CALL_INTEGRATION_ENABLED] = false;
+              } else if (Platform.isIOS) {
+                // Disable PIP on iOS as it looks weird
+                featureFlags[FeatureFlagEnum.PIP_ENABLED] = false;
+              }
+
+              // Define meetings options here
+              var options = JitsiMeetingOptions()
+                ..room = conference.conferenceName
+                ..serverURL = serverUrl
+                ..subject = conference.subject
+                ..userDisplayName = conference.displayName
+                ..userEmail = emailText.text
+                ..audioOnly = isAudioOnly
+                ..audioMuted = isAudioMuted
+                ..videoMuted = isVideoMuted
+                ..featureFlags.addAll(featureFlags);
+
+              debugPrint("JitsiMeetingOptions: $options");
+              await JitsiMeet.joinMeeting(
+                options,
+                listener:
+                    JitsiMeetingListener(onConferenceWillJoin: ({message}) {
+                  debugPrint(
+                      "${options.room} will join with message: $message");
+                }, onConferenceJoined: ({message}) {
+                  debugPrint("${options.room} joined with message: $message");
+                }, onConferenceTerminated: ({message}) {
+                  debugPrint(
+                      "${options.room} terminated with message: $message");
+                }),
+                // by default, plugin default constraints are used
+                //roomNameConstraints: new Map(), // to disable all constraints
+                //roomNameConstraints: customContraints, // to use your own constraint(s)
+              );
+            } catch (error) {
+              debugPrint("error: $error");
+            }
+          }
+        }
       }
-
-      // Define meetings options here
-      var options = JitsiMeetingOptions()
-        ..room = conference.conferenceName
-        ..serverURL = serverUrl
-        ..subject = conference.subject
-        ..userDisplayName = conference.displayName
-        ..userEmail = emailText.text
-        ..audioOnly = isAudioOnly
-        ..audioMuted = isAudioMuted
-        ..videoMuted = isVideoMuted
-        ..featureFlags.addAll(featureFlags);
-
-      debugPrint("JitsiMeetingOptions: $options");
-      await JitsiMeet.joinMeeting(
-        options,
-        listener: JitsiMeetingListener(onConferenceWillJoin: ({message}) {
-          debugPrint("${options.room} will join with message: $message");
-        }, onConferenceJoined: ({message}) {
-          debugPrint("${options.room} joined with message: $message");
-        }, onConferenceTerminated: ({message}) {
-          debugPrint("${options.room} terminated with message: $message");
-        }),
-        // by default, plugin default constraints are used
-        //roomNameConstraints: new Map(), // to disable all constraints
-        //roomNameConstraints: customContraints, // to use your own constraint(s)
-      );
-/*
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) => Chatrooms(
-                  auth: widget.auth,
-                  onSignOut: () => widget.onSignOut,
-                  conferenceKey: conference.key)));*/
-    } catch (error) {
-      debugPrint("error: $error");
     }
   }
 
-  static final Map<RoomNameConstraintType, RoomNameConstraint>
-      customContraints = {
-    RoomNameConstraintType.MAX_LENGTH: new RoomNameConstraint((value) {
-      return value.trim().length <= 50;
-    }, "Maximum room name length should be 30."),
-    RoomNameConstraintType.FORBIDDEN_CHARS: new RoomNameConstraint((value) {
-      return RegExp(r"[$€£]+", caseSensitive: false, multiLine: false)
-              .hasMatch(value) ==
-          false;
-    }, "Currencies characters aren't allowed in room names."),
-  };
-
-  void _onConferenceWillJoin({message}) {
-    debugPrint("_onConferenceWillJoin broadcasted with message: $message");
-  }
-
-  void _onConferenceJoined({message}) {
-    debugPrint("_onConferenceJoined broadcasted with message: $message");
-  }
-
-  void _onConferenceTerminated({message}) {
-    debugPrint("_onConferenceTerminated broadcasted with message: $message");
-  }
-
-  _onError(error) {
-    debugPrint("_onError broadcasted: $error");
-  }
+  
 }
