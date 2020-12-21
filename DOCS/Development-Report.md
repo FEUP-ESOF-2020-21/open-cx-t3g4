@@ -309,7 +309,7 @@ A few aspects of the code and the regular product increments can be found [here]
 
 There are several ways of documenting testing activities, and quality assurance in general, being the most common: a strategy, a plan, test case specifications, and test checklists.
 
-The acceptance tests can be found in each user story in [here](https://github.com/FEUP-ESOF-2020-21/open-cx-t3g4/projects/1)
+The acceptance tests can be found in the description of each user story (above the mockups) in [here](https://github.com/FEUP-ESOF-2020-21/open-cx-t3g4/projects/1)
 
 ---
 ## Configuration and change management
