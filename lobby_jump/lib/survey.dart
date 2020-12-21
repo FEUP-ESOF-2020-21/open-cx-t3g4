@@ -83,7 +83,7 @@ class _SurveyState extends State<Survey> {
                       child: Padding(
                           padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
                           child: Text(
-                              "Choose only three topics related to the conference theme:",
+                              "Choose up to three topics related to the conference theme:",
                               style: TextStyle(fontSize: 20)))),
                   Padding(
                     padding: EdgeInsets.all(40),
@@ -99,7 +99,7 @@ class _SurveyState extends State<Survey> {
                       width: 300.0,
                       child: RaisedButton(
                           onPressed: () => _joinMeeting(),
-                          child: Text('Join Meeting',
+                          child: Text('Join Conference',
                               style: new TextStyle(
                                   fontSize: 17.0, color: Colors.white)),
                           color: Color.fromRGBO(88, 0, 0, 1),

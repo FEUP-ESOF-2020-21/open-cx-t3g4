@@ -121,7 +121,7 @@ class ConferenceMenu extends StatelessWidget {
               );
             },
             child: Text(
-              "Create Meeting",
+              "Create Conference",
               style: TextStyle(color: Color.fromRGBO(88, 0, 0, 1)),
             ),
             color: Colors.white,
@@ -130,7 +130,7 @@ class ConferenceMenu extends StatelessWidget {
             ),
           ),
         ),
-         SizedBox(
+        SizedBox(
           height: 20,
         ),
         Container(
