@@ -236,6 +236,12 @@ class _CreateConferenceState extends State<CreateConference> {
       text = "Conference name can not have empty spaces";
     } else if (message == 3) {
       text = "Topics can not have empty spaces";
+    } else if (message == 4) {
+      text = "Topics can not be equal";
+    } else if (message == 5) {
+      text = "Conference name too short";
+    } else if (message == 6) {
+      text = "Topics too short";
     }
 
     // set up the AlertDialog
@@ -283,71 +289,97 @@ class _CreateConferenceState extends State<CreateConference> {
               topic5.contains(" ")) {
             showAlertDialog(this.context, 3);
           } else {
-            conference.topics.addAll({topic1: 0});
-            conference.topics.addAll({topic2: 0});
-            conference.topics.addAll({topic3: 0});
-            conference.topics.addAll({topic4: 0});
-            conference.topics.addAll({topic5: 0});
+            if (topic1 == topic2 ||
+                topic2 == topic3 ||
+                topic3 == topic4 ||
+                topic4 == topic5 ||
+                topic1 == topic3 ||
+                topic2 == topic4 ||
+                topic3 == topic5 ||
+                topic1 == topic4 ||
+                topic2 == topic5 ||
+                topic1 == topic5) {
+              showAlertDialog(this.context, 4);
+            } else {
+              if (conference.conferenceName.length < 4) {
+                showAlertDialog(this.context, 5);
+              } else {
+                if (topic1.length < 4 ||
+                    topic2.length < 4 ||
+                    topic3.length < 4 ||
+                    topic4.length < 4 ||
+                    topic5.length < 4) {
+                  showAlertDialog(this.context, 6);
+                } else {
+                  conference.topics.addAll({topic1: 0});
+                  conference.topics.addAll({topic2: 0});
+                  conference.topics.addAll({topic3: 0});
+                  conference.topics.addAll({topic4: 0});
+                  conference.topics.addAll({topic5: 0});
 
-            conferenceRef.push().set(conference.toJson());
+                  conferenceRef.push().set(conference.toJson());
 
-            String serverUrl =
-                serverText.text?.trim()?.isEmpty ?? "" ? null : serverText.text;
+                  String serverUrl = serverText.text?.trim()?.isEmpty ?? ""
+                      ? null
+                      : serverText.text;
 
-            try {
-              // Enable or disable any feature flag here
-              // If feature flag are not provided, default values will be used
-              // Full list of feature flags (and defaults) available in the README
-              Map<FeatureFlagEnum, bool> featureFlags = {
-                FeatureFlagEnum.WELCOME_PAGE_ENABLED: false,
-              };
+                  try {
+                    // Enable or disable any feature flag here
+                    // If feature flag are not provided, default values will be used
+                    // Full list of feature flags (and defaults) available in the README
+                    Map<FeatureFlagEnum, bool> featureFlags = {
+                      FeatureFlagEnum.WELCOME_PAGE_ENABLED: false,
+                    };
 
-              // Here is an example, disabling features for each platform
-              if (Platform.isAndroid) {
-                // Disable ConnectionService usage on Android to avoid issues (see README)
-                featureFlags[FeatureFlagEnum.CALL_INTEGRATION_ENABLED] = false;
-              } else if (Platform.isIOS) {
-                // Disable PIP on iOS as it looks weird
-                featureFlags[FeatureFlagEnum.PIP_ENABLED] = false;
+                    // Here is an example, disabling features for each platform
+                    if (Platform.isAndroid) {
+                      // Disable ConnectionService usage on Android to avoid issues (see README)
+                      featureFlags[FeatureFlagEnum.CALL_INTEGRATION_ENABLED] =
+                          false;
+                    } else if (Platform.isIOS) {
+                      // Disable PIP on iOS as it looks weird
+                      featureFlags[FeatureFlagEnum.PIP_ENABLED] = false;
+                    }
+
+                    // Define meetings options here
+                    var options = JitsiMeetingOptions()
+                      ..room = conference.conferenceName
+                      ..serverURL = serverUrl
+                      ..subject = conference.subject
+                      ..userDisplayName = conference.displayName
+                      ..userEmail = emailText.text
+                      ..audioOnly = isAudioOnly
+                      ..audioMuted = isAudioMuted
+                      ..videoMuted = isVideoMuted
+                      ..featureFlags.addAll(featureFlags);
+
+                    debugPrint("JitsiMeetingOptions: $options");
+                    await JitsiMeet.joinMeeting(
+                      options,
+                      listener: JitsiMeetingListener(
+                          onConferenceWillJoin: ({message}) {
+                        debugPrint(
+                            "${options.room} will join with message: $message");
+                      }, onConferenceJoined: ({message}) {
+                        debugPrint(
+                            "${options.room} joined with message: $message");
+                      }, onConferenceTerminated: ({message}) {
+                        debugPrint(
+                            "${options.room} terminated with message: $message");
+                      }),
+                      // by default, plugin default constraints are used
+                      //roomNameConstraints: new Map(), // to disable all constraints
+                      //roomNameConstraints: customContraints, // to use your own constraint(s)
+                    );
+                  } catch (error) {
+                    debugPrint("error: $error");
+                  }
+                }
               }
-
-              // Define meetings options here
-              var options = JitsiMeetingOptions()
-                ..room = conference.conferenceName
-                ..serverURL = serverUrl
-                ..subject = conference.subject
-                ..userDisplayName = conference.displayName
-                ..userEmail = emailText.text
-                ..audioOnly = isAudioOnly
-                ..audioMuted = isAudioMuted
-                ..videoMuted = isVideoMuted
-                ..featureFlags.addAll(featureFlags);
-
-              debugPrint("JitsiMeetingOptions: $options");
-              await JitsiMeet.joinMeeting(
-                options,
-                listener:
-                    JitsiMeetingListener(onConferenceWillJoin: ({message}) {
-                  debugPrint(
-                      "${options.room} will join with message: $message");
-                }, onConferenceJoined: ({message}) {
-                  debugPrint("${options.room} joined with message: $message");
-                }, onConferenceTerminated: ({message}) {
-                  debugPrint(
-                      "${options.room} terminated with message: $message");
-                }),
-                // by default, plugin default constraints are used
-                //roomNameConstraints: new Map(), // to disable all constraints
-                //roomNameConstraints: customContraints, // to use your own constraint(s)
-              );
-            } catch (error) {
-              debugPrint("error: $error");
             }
           }
         }
       }
     }
   }
-
-  
 }
