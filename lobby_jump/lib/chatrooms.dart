@@ -10,10 +10,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:jitsi_meet/jitsi_meet.dart';
 
 class Chatrooms extends StatefulWidget {
-  Chatrooms({this.auth, this.onSignOut, this.conferenceKey});
+  Chatrooms({this.auth, this.onSignOut, this.conferenceKey, this.conferenceR});
   final BaseAuth auth;
   final VoidCallback onSignOut;
   final String conferenceKey;
+  final Conference conferenceR;
 
   @override
   _ChatroomsState createState() => _ChatroomsState();
@@ -159,26 +160,38 @@ class _ChatroomsState extends State<Chatrooms> {
 
     return Scaffold(
       appBar: new AppBar(
-        title: Transform(
-            transform: Matrix4.translationValues(-55.0, 0.0, 0.0),
-            child: const Text('Chatrooms available')),
-        leading: new Container(),
-        backgroundColor: Color.fromRGBO(88, 0, 0, 1),
-        elevation: 0,
-        actions: <Widget>[
-          IconButton(
-              icon: Icon(Icons.house_outlined),
+        leading: Transform(
+            transform: Matrix4.translationValues(8.0, 3.0, 0.0),
+            child: IconButton(
+              onPressed: () async {
+                var options = JitsiMeetingOptions()
+                  ..room = widget.conferenceR.conferenceName;
+
+                await JitsiMeet.joinMeeting(options);
+              },
+              icon: Icon(Icons.arrow_back),
               color: Colors.grey[600],
-              iconSize: 40,
-              onPressed: () {
-                Navigator.pop(context);
-                Navigator.pop(context);
-                Navigator.pop(context);
-              }),
-          /* new FlatButton(
-              onPressed: _signOut,
-              child: new Text('Logout',
-                  style: new TextStyle(fontSize: 17.0, color: Colors.white))) */
+              iconSize: 35,
+            )),
+        backgroundColor: Color.fromRGBO(88, 0, 0, 1),
+        actions: <Widget>[
+          Transform(
+              transform: Matrix4.translationValues(-78.0, 30.0, 0.0),
+              child: Transform.scale(
+                scale: 1.5,
+                child: Text('Chatrooms available'),
+              )),
+          Transform(
+              transform: Matrix4.translationValues(-10.0, 0.0, 0.0),
+              child: IconButton(
+                  icon: Icon(Icons.house_outlined),
+                  color: Colors.grey[600],
+                  iconSize: 40,
+                  onPressed: () {
+                    Navigator.pop(context);
+                    Navigator.pop(context);
+                    Navigator.pop(context);
+                  }))
         ],
       ),
       backgroundColor: Color.fromRGBO(88, 0, 0, 1),

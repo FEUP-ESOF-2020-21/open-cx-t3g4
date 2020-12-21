@@ -223,7 +223,9 @@ class _SurveyState extends State<Survey> {
                 builder: (context) => Chatrooms(
                     auth: widget.auth,
                     onSignOut: () => widget.onSignOut,
-                    conferenceKey: widget.conference.key)));
+                    conferenceKey: widget.conference.key,
+                    conferenceR: widget.conference,
+                    )));
       } catch (error) {
         debugPrint("error: $error");
       }
