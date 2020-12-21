@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:lobby_jump/conference_menu.dart';
 import 'auth.dart';
 import 'package:email_validator/email_validator.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
 class LoginPage extends StatefulWidget {
   LoginPage({Key key}) : super(key: key);

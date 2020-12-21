@@ -34,14 +34,6 @@ class _ChatroomsState extends State<Chatrooms> {
     final FirebaseDatabase database = FirebaseDatabase.instance;
     conferenceRef = database.reference().child('conferences');
     conferenceRef.onChildAdded.listen(_onEntryAdded);
-    //conferenceRef.onChildChanged.listen(_onEntryChanged);
-
-    /*  conferenceRef.
-    var keys = conference.topics.keys;
-    var values = conference.topics.values;
-    print("------------------------------------------------------");
-    print(conference.topics.values.toSet()); */
-
     var topicsref = conferenceRef.child(widget.conferenceKey).child('topics');
 
     topicsref.once().then((DataSnapshot snapshot) async {

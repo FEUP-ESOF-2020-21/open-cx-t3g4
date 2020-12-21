@@ -8,8 +8,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:jitsi_meet/feature_flag/feature_flag_enum.dart';
 import 'package:jitsi_meet/jitsi_meet.dart';
 import 'package:jitsi_meet/jitsi_meeting_listener.dart';
-import 'package:jitsi_meet/room_name_constraint.dart';
-import 'package:jitsi_meet/room_name_constraint_type.dart';
 
 class CreateConference extends StatefulWidget {
   @override
@@ -42,11 +40,6 @@ class _CreateConferenceState extends State<CreateConference> {
   @override
   void initState() {
     super.initState();
-    JitsiMeet.addListener(JitsiMeetingListener(
-        onConferenceWillJoin: _onConferenceWillJoin,
-        onConferenceJoined: _onConferenceJoined,
-        onConferenceTerminated: _onConferenceTerminated,
-        onError: _onError));
     conference = Conference("", "", "", false, false, true, {});
 
     final FirebaseDatabase database = FirebaseDatabase.instance;
@@ -347,14 +340,6 @@ class _CreateConferenceState extends State<CreateConference> {
                 //roomNameConstraints: new Map(), // to disable all constraints
                 //roomNameConstraints: customContraints, // to use your own constraint(s)
               );
-/*
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) => Chatrooms(
-                  auth: widget.auth,
-                  onSignOut: () => widget.onSignOut,
-                  conferenceKey: conference.key)));*/
             } catch (error) {
               debugPrint("error: $error");
             }
@@ -364,31 +349,5 @@ class _CreateConferenceState extends State<CreateConference> {
     }
   }
 
-  static final Map<RoomNameConstraintType, RoomNameConstraint>
-      customContraints = {
-    RoomNameConstraintType.MAX_LENGTH: new RoomNameConstraint((value) {
-      return value.trim().length <= 50;
-    }, "Maximum room name length should be 30."),
-    RoomNameConstraintType.FORBIDDEN_CHARS: new RoomNameConstraint((value) {
-      return RegExp(r"[$€£]+", caseSensitive: false, multiLine: false)
-              .hasMatch(value) ==
-          false;
-    }, "Currencies characters aren't allowed in room names."),
-  };
-
-  void _onConferenceWillJoin({message}) {
-    debugPrint("_onConferenceWillJoin broadcasted with message: $message");
-  }
-
-  void _onConferenceJoined({message}) {
-    debugPrint("_onConferenceJoined broadcasted with message: $message");
-  }
-
-  void _onConferenceTerminated({message}) {
-    debugPrint("_onConferenceTerminated broadcasted with message: $message");
-  }
-
-  _onError(error) {
-    debugPrint("_onError broadcasted: $error");
-  }
+  
 }
